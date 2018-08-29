@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn import cross_validation, metrics
 
+
 def LogitRR(x):
     '''
     :param x: 划款率，有的超过1，有的为0.做截断处理
@@ -21,6 +22,7 @@ def LogitRR(x):
     else:
         y = x
     return np.log(y/(1-y))
+
 
 '''缺失值处理'''
 def MakeupMissingCategorical(x):
@@ -48,6 +50,7 @@ mydata['rec_rate'] = mydata['rec_rate'].map(lambda x: min(x,1))
 #mydata['logit_rr'] = mydata['rec_rate'].map(LogitRR)
 #整个开发数据分为训练集、测试集2个部分
 trainData, testData = train_test_split(mydata,test_size=0.4)
+
 
 '''
 第二步：数据预处理
@@ -103,7 +106,6 @@ numFeatures2 = numFeatures + encodedFeatures
 此外，调参过程中选择的误差函数是均值误差，5倍折叠
 '''
 X, y= trainData[numFeatures2],trainData['rec_rate']
-
 
 
 '''

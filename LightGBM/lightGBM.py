@@ -8,6 +8,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import  make_classification
+
 # 加载数据
 print('Load data...')
 
@@ -16,7 +17,7 @@ data=iris.data
 target = iris.target
 X_train,X_test,y_train,y_test =train_test_split(data,target,test_size=0.2,random_state=1)
 
-
+pd.DataFrame()
 print('Start training...')
 # 创建模型，训练模型
 gbm = lgb.LGBMRegressor(objective='regression',num_leaves=31,learning_rate=0.05,n_estimators=20)

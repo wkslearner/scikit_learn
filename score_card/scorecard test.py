@@ -82,13 +82,13 @@ for var in var_in_model:
 
     # 有些取值个数少、但是需要合并的变量
     if var1 in merge_bin_dict.keys():
-        print "{} need to be regrouped".format(var1)
+        print ("{} need to be regrouped".format(var1))
         testData[var1 + '_Bin'] = testData[var1].map(merge_bin_dict[var1])
 
     # 有些变量需要用bad rate进行编码
     if var1.find('_br_encoding')>-1:
         var2 =var1.replace('_br_encoding','')
-        print "{} need to be encoded by bad rate".format(var2)
+        print ("{} need to be encoded by bad rate".format(var2))
         testData[var1] = testData[var2].map(br_encoding_dict[var2])
         #需要注意的是，有可能在测试样中某些值没有出现在训练样本中，从而无法得出对应的bad rate是多少。故可以用最坏（即最大）的bad rate进行编码
         max_br = max(testData[var1])
