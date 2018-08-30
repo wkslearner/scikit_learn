@@ -11,6 +11,7 @@ from imblearn.combine import SMOTEENN
 from imblearn.over_sampling import RandomOverSampler,SMOTE,ADASYN
 from sklearn.model_selection import GridSearchCV, KFold ,RandomizedSearchCV
 from sklearn.metrics import make_scorer, fbeta_score, accuracy_score,recall_score
+from plot_function.model_plot import PlotKS
 import time
 
 start_time=time.time()
@@ -164,6 +165,7 @@ newuser_dataset=disper_split(newuser_dataset,category_var)
 newuser_dataset[continue_var]=newuser_dataset[continue_var].fillna(-1)
 print(model_var_list)
 
+
 target_dataset=first_target_dataset.copy()
 target_dataset=disper_split(target_dataset,category_var)
 target_dataset[continue_var]=target_dataset[continue_var].fillna(-1)
@@ -226,9 +228,14 @@ matric_xgb_test=pd.crosstab(y_test,y_test_pred_xgb, rownames=['actual'], colname
 print(matric_xgb_train)
 print(matric_xgb_test)
 
+#画ks曲线
+test_pred_prob=XGC.predict_proba(x_test)[:,1]
+end_plot=PlotKS(test_pred_prob,y_test,10000,asc=0)
+
 
 newuser_dataset['prob_xgc']=XGC.predict_proba(newuser_dataset[model_var_list])[:,1]
 first_target_dataset['prob_xgc']=XGC.predict_proba(target_dataset[model_var_list])[:,1]
+
 
 # excel_writer=pd.ExcelWriter('/Users/andpay/Documents/job/model/newuser_marketing_credithands/model_practice/model_practice_v4_predict1.xlsx',engine='xlsxwriter')
 # first_target_dataset.to_excel(excel_writer,'model_result',index=False)

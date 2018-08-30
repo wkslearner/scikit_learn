@@ -6,43 +6,7 @@ from sklearn.neighbors import NearestNeighbors
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-
-
-
-def disper_split(dataframe,var_list):
-    '''
-    :param dataframe: 目标数据框
-    :param var_list: 分类变量列表
-    :return: 变量与数值映射字典及分类处理后的新数据框
-    '''
-    split_point_cat={}
-    split_cat_list = []
-    for var in var_list:
-        split_cat_list.append(var)
-        mid_dict={}
-        if dataframe[dataframe[var].isnull()].shape[0] > 0:
-            sort_value = sorted(list(dataframe[dataframe[var].notnull()][var].unique()))
-            num = len(sort_value)
-            for i in range(num):
-                dataframe.loc[(dataframe[var] == sort_value[i]), var ] = i
-                mid_dict[i]=sort_value[i]
-
-            dataframe.loc[dataframe[var].isnull(), var] = -1
-            mid_dict[-1]='None'
-            split_point_cat[var]=mid_dict
-
-        else:
-            sort_value = sorted(list(dataframe[dataframe[var].notnull()][var].unique()))
-            num = len(sort_value)
-            for i in range(num):
-                dataframe.loc[(dataframe[var] == sort_value[i]), var] = i
-                mid_dict[i] = sort_value[i]
-
-            split_point_cat[var ] = mid_dict
-
-    return  dataframe
-
-
+from data_process.list_process import remove_list
 
 
 '''SMOTE人工合成样本'''
@@ -91,19 +55,21 @@ class Smote:
 if __name__=='__main__':
     df = pd.read_excel('/Users/andpay/Documents/job/data/帮还活动/activity_history/marketing_modedata3_14.xlsx')
     df = df[0:100]
+    print(df.shape)
 
     cate_list = ['sex', 'brandcode', 'channel_type', 'marry', 'ccerate']
-    df = disper_split(df, cate_list)
     df = df.fillna(0)
     var_list = list(df.columns)
     var_list.remove('partyid')
     var_list.remove('name')
+    continue_list = remove_list(var_list, cate_list)
 
     #a=np.array([[1,2,3],[4,5,6],[2,3,1],[2,1,2],[2,3,4],[2,3,4]])
-    data=np.array(df[var_list])
-    print(np.round(data,3))
+    data=np.array(df[continue_list])
+    #print(np.round(data,3))
     s=Smote(data,N=50)
 
-    print (s.over_sampling())
+    dataset=s.over_sampling()
+    print (dataset.shape)
     print (s.newindex)
 

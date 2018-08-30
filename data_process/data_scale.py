@@ -12,11 +12,11 @@ x = np.array([
 
 
 '''指定均值方差数据标准化(默认均值0 方差 1)'''
-x_scaled = preprocessing.scale(x)
+x_scaled = preprocessing.scale(x,axis=1)
 print(x_scaled)
 
-mean_row=x_scaled.mean(axis=0)
-std_row= x_scaled.std(axis=0)
+mean_row=x_scaled.mean(axis=1)
+std_row= x_scaled.std(axis=1)
 
 print(mean_row)
 print(std_row)
