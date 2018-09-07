@@ -1,32 +1,51 @@
+#!/usr/bin/python
+# encoding=utf-8
+
 import pandas as pd
 import numpy as np
-import time
-from sklearn.ensemble import RandomForestClassifier,GradientBoostingClassifier
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-from score_card_version1.woe_information import *
-import statsmodels.api as sm
-from score_card_version1.result_check import KS_AR
-from sklearn.metrics import roc_curve,auc,roc_auc_score
+from data_process.list_process import remove_list
+from data_process.feature_handle import disper_split
+from sklearn import preprocessing
+from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import GridSearchCV, KFold ,RandomizedSearchCV
 from sklearn.cross_validation import train_test_split
-from sklearn.metrics import accuracy_score
+from xgboost.sklearn import XGBClassifier
+from sklearn.metrics import make_scorer, fbeta_score, accuracy_score,recall_score
+from sklearn import metrics
+import time
 
 
-user_df=pd.read_csv('/Users/andpay/Desktop/portrait.csv')
+start_time=time.time()
 
-var_list=['register','sumamt','applycount','age', 'cardnum','count_d','use_rate','sex',
-          'cardnum','count_d','passcount','loancount','lineused','counts']
-
-
-traindata, testdata= train_test_split(user_df,test_size=0.2)
+dataset=pd.read_excel('/Users/andpay/Documents/job/model/behave_model/behave_model_dataset_v1_1.xlsx')
+dataset.loc[dataset['last_overday']>=10,'cate']=1
+dataset.loc[dataset['last_overday']<10,'cate']=0
 
 
-x_train,y_train=traindata[var_list],traindata['cate']
-x_test,y_test=testdata[var_list],testdata['cate']
+var_list=list(dataset.columns)
+model_var_list=remove_list(var_list,['partyid','loanid','last_overday','cate','register_duration'])
 
 
-for i in range(10,100,5):
-    clf = GradientBoostingClassifier(n_estimators=i,learning_rate=0.05,max_depth=2,random_state=0)
-    clf.fit(x_train, y_train.astype(int))
-    print ("n_estimators = "+str(i)+"  learning_rate = "+str(0.05)+ \
-    "  score = "+str(clf.score(x_test, y_test.astype(int))))
+category_var=['sex','city_id','channel_type','brandcode']
+continue_var=remove_list(model_var_list,category_var)  #这里会改变newvar_list的元素数量
+newuser_dataset=disper_split(dataset,category_var)
+newuser_dataset[continue_var]=newuser_dataset[continue_var].fillna(0)
+
+
+# x_train,x_test,y_train,y_test= train_test_split(,test_size=0.25,random_state=1)
+XGC=XGBClassifier(n_estimators=150,max_depth=9,learning_rate=0.03)
+XGC.fit(newuser_dataset[continue_var].astype(int),dataset['cate'].astype(int))
+xgc_col=list(np.round(XGC.feature_importances_,3))
+
+
+#变量重要性排序
+var_importance=pd.DataFrame({'var':continue_var,'importance_value':xgc_col})
+var_importance=var_importance.sort_values(by='importance_value',ascending=0)
+print(var_importance)
+
+
+
+
+
+
 

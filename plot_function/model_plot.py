@@ -64,13 +64,13 @@ def PlotKS(preds, labels, n, asc):
     print('ks_value is ' + str(np.round(ks_value, 4)) + ' at pop = ' + str(np.round(ks_pop, 4)))
 
     # chart
-    plt.plot(ksds.tile, ksds.cumsum_good, label='cum_good',
+    l1,=plt.plot(ksds.tile, ksds.cumsum_good, label='cum_good',
              color='blue', linestyle='-', linewidth=2)
 
-    plt.plot(ksds.tile, ksds.cumsum_bad, label='cum_bad',
+    l2,=plt.plot(ksds.tile, ksds.cumsum_bad, label='cum_bad',
              color='red', linestyle='-', linewidth=2)
 
-    plt.plot(ksds.tile, ksds.ks, label='ks',
+    l3,=plt.plot(ksds.tile, ksds.ks, label='ks',
              color='green', linestyle='-', linewidth=2)
 
     plt.axvline(ks_pop, color='gray', linestyle='--')
@@ -79,6 +79,8 @@ def PlotKS(preds, labels, n, asc):
     plt.axhline(ksds.loc[ksds.ks.idxmax(), 'cumsum_bad'], color='red', linestyle='--')
     plt.title('KS=%s ' % np.round(ks_value, 4) +
               'at Pop=%s' % np.round(ks_pop, 4), fontsize=15)
+
+    plt.legend(handles=[l1, l2, l3 ], labels=['good', 'bad','ks'], loc='best')
 
     plt.show()
 

@@ -4,7 +4,6 @@
 
 
 '''移除列表中部分元素，生成新列表'''
-
 def remove_list(all_list,remove_element):
     end_list = []
     for element in all_list:

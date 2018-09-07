@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.metrics import roc_curve,auc,roc_auc_score
 import matplotlib.pyplot as plt
 
+
 ### Calculate the KS and AR for the socrecard model
 def KS_AR(df, score, target):
     '''
@@ -37,6 +38,7 @@ def Prob2Score(prob, basePoint, PDO):
     #将概率转化成分数
     y = np.log(prob/(1-prob))
     return  int(basePoint+PDO/np.log(2)*(-y))
+
 
 
 

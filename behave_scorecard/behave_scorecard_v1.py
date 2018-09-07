@@ -18,7 +18,7 @@ import time
 start_time=time.time()
 
 
-dataset=pd.read_excel('/Users/andpay/Documents/job/model/behave_model/behave_model_dataset_v1.xlsx')
+dataset=pd.read_excel('/Users/andpay/Documents/job/model/behave_model/behave_model_dataset_v1_1.xlsx')
 var_list=list(dataset.columns)
 model_var_list=remove_list(var_list,['partyid','loanid','last_overday','cate'])
 
@@ -27,6 +27,8 @@ category_var=['sex','city_id','channel_type','brandcode']
 continue_var=remove_list(model_var_list,category_var)  #这里会改变newvar_list的元素数量
 newuser_dataset=disper_split(dataset,category_var)
 newuser_dataset[continue_var]=newuser_dataset[continue_var].fillna(0)
+
+
 
 #目标样本索引
 #index_zero=dataset[dataset['cate']==0].index

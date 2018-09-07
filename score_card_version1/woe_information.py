@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+
 '''woe和iv值函数'''
 def woe_informationvalue(dataframe,x_key,y_key):
     x_category=dataframe[x_key].unique()

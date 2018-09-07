@@ -31,29 +31,29 @@ def disper_split(dataframe,var_list):
     split_point_cat={}
     split_cat_list = []
     for var in var_list:
-        split_cat_list.append(var + '_cat')
+        split_cat_list.append(var)
         mid_dict={}
         if dataframe[dataframe[var].isnull()].shape[0] > 0:
             sort_value = sorted(list(dataframe[dataframe[var].notnull()][var].unique()))
             num = len(sort_value)
             for i in range(num):
-                dataframe.loc[(dataframe[var] == sort_value[i]), var + '_cat'] = i
+                dataframe.loc[(dataframe[var] == sort_value[i]), var ] = i
                 mid_dict[i]=sort_value[i]
 
-            dataframe.loc[dataframe[var].isnull(), var + '_cat'] = -1
+            dataframe.loc[dataframe[var].isnull(), var] = -1
             mid_dict[-1]='None'
-            split_point_cat[var+'_cat']=mid_dict
+            split_point_cat[var]=mid_dict
 
         else:
             sort_value = sorted(list(dataframe[dataframe[var].notnull()][var].unique()))
             num = len(sort_value)
             for i in range(num):
-                dataframe.loc[(dataframe[var] == sort_value[i]), var + '_cat'] = i
+                dataframe.loc[(dataframe[var] == sort_value[i]), var] = i
                 mid_dict[i] = sort_value[i]
 
-            split_point_cat[var + '_cat'] = mid_dict
+            split_point_cat[var] = mid_dict
 
-    return split_point_cat,dataframe[split_cat_list]
+    return dataframe
 
 
 '''连续变量进行等频分箱后，卡方分箱'''
