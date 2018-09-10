@@ -28,6 +28,8 @@ df=pd.read_excel('/Users/andpay/Documents/job/model/scorecard_model/scorecard_mo
 end_user_info=df.drop(['partyid','loanid','loantime','min_time'],axis=1)
 end_user_info.loc[end_user_info['over_dueday']>=30,'cate']=1
 end_user_info.loc[end_user_info['over_dueday']<30,'cate']=0
+end_user_info['cardline_userate']=end_user_info['cardlineused']/end_user_info['cardline']
+end_user_info['cardline_userate_3m']=end_user_info['cardlineused_3m']/end_user_info['cardline_3m']
 
 var_list=['txn_avgamt_6m','txn_count_6m','query_num_3m','cardline','cardline_3m','pcr_loanamt','pcr_loanamt_3m',
           'pcr_other_balance','pcr_over_otheramt','pcr_over_amt','td_score','p2p_1m','p2p_3m','p2p_7d','platform_count_1m',
@@ -47,60 +49,55 @@ new_column=end_user_info.columns
 
 cat_var=['id_city']
 con_var=remove_list(new_column,cat_var+['over_dueday','cate'])
-
 end_user_info=disper_split(end_user_info,cat_var)
 
 
+'''变量间相关性检验'''
+var_relative=regression_analysis(end_user_info,con_var)
+relative_df=pd.DataFrame(var_relative,columns=['var1','var2','p_value','relative_coeffient'])
+print(relative_df)
+
+
 #对变量进行卡方分箱
-split_point_chi_1,chi_df_1=chi_equalwide(end_user_info,con_var,'cate',max_interval=5,mont=True,special_list=['age'])
+split_point_chi,chi_df_1=chi_equalwide(end_user_info,con_var,'cate',max_interval=5,numOfSplit=300,mont=False,special_list=['age'])
 end_col=list(chi_df_1.columns)
 
-print(split_point_chi_1)
 
 
-'''woe和iv值计算'''
-def get_woe_information(dataframe,variable_list,target_var):
-    '''
-    :param dataframe: 
-    :param variable_list: 
-    :param target_var: 
-    :return: 
-    '''
+'''卡方分箱后手动合并分箱'''
+def manual_mergebin(dataframe,merge_var,merge_bin=[],split_point_dict={}):
 
-    #求woe 和 infomation_value
-    woe_dict={}
-    information_list=[]
-    for var in variable_list:
-        woe,information_value=woe_informationvalue(dataframe,var,target_var)
-        woe_dict[var]=woe
-        information_list.append(information_value)
+    merge_value=min(merge_bin)
+    dataframe.loc[dataframe[merge_var].isin(merge_bin),merge_var]=merge_value
 
+    split_dict=split_point_dict[merge_var]
 
-    #把所有值进行分解并封装成dataframe
-    woe_list = []
-    for var in variable_list:
-        first_layer = woe_dict[var]
-        for key in first_layer.keys():
-            value = first_layer[key]['woe']
-            count = first_layer[key]['count']
-            woe_list.append([var, key, count,value])
+    bin_list=[]
+    for key in merge_bin:
+        bin=split_dict[key].split('-')
+        bin_list=bin_list+bin
 
+        #删除字典中原有项
+        split_dict.pop(key)
 
-    woe_df = pd.DataFrame(woe_list, columns=['variable', 'class','bad_count','woe'])
-    information_df = pd.DataFrame({'variable': variable_list, 'information_value': information_list},
-                                  columns=['variable', 'information_value'])
+    #生成新键值对
+    bin_text=str(bin_list[0])+'-'+str(bin_list[-1])
+    #把新键值对放入字典
+    split_dict[merge_value]=bin_text
+    #重新对原因变量标签进行赋值
+    split_point_dict[merge_var]=split_dict
 
-    woe_df=woe_df[woe_df['variable']!=target_var]  #结果中不呈现目标变量
-    information_df=information_df[information_df['variable']!=target_var]
+    return dataframe,split_point_dict
 
-    return woe_df,information_df
+end_user_info,split_point_chi=manual_mergebin(end_user_info,'td_score_freq_bin',merge_bin=[2,3,4],split_point_dict=split_point_chi)
+end_user_info,split_point_chi=manual_mergebin(end_user_info,'txn_count_6m_freq_bin',merge_bin=[2,3],split_point_dict=split_point_chi)
+print(split_point_chi)
 
 
 woe_df,information_df=get_woe_information(end_user_info,end_col,'cate')
 
-
 for var,key in zip(woe_df['variable'],woe_df['class']):
-    woe_df.loc[(woe_df['variable']==var)&(woe_df['class']==key),'category']= split_point_chi_1[var][key]
+    woe_df.loc[(woe_df['variable']==var)&(woe_df['class']==key),'category']= split_point_chi[var][key]
 
 #print(woe_df[woe_df['variable'].isin(['USERATE_freq_bin','TD_SCORE_freq_bin'])])
 
@@ -109,7 +106,6 @@ excel_writer=pd.ExcelWriter('/Users/andpay/Documents/job/model/scorecard_model/w
 woe_df.to_excel(excel_writer,'woe',index=False)
 information_df.to_excel(excel_writer,'informationvalue',index=False)
 excel_writer.save()
-
 
 
 '''随机森林挑选变量'''
@@ -121,9 +117,11 @@ RFC =XGBClassifier()
 RFC.fit(x,y.astype(int))
 xgc_col=list(np.round(RFC.feature_importances_,3))
 
+
 var_importance=pd.DataFrame({'var':end_col,'importance_value':xgc_col})
 var_importance=var_importance.sort_values(by='importance_value',ascending=0)
 print(var_importance)
+
 
 # features_rfc = end_col
 # featureImportance = {features_rfc[i]:RFC.feature_importances_[i] for i in range(len(features_rfc))} #变量重要性字典
@@ -133,15 +131,13 @@ print(var_importance)
 # print(features_selection)
 
 
-'''变量间相关性检验'''
-var_relative=regression_analysis(end_user_info,end_col)
-print(var_relative)
-
 
 #移除方差膨胀因子高的变量
-# end_col=remove_list(end_col,['platform_count_3m_freq_bin','query_num_3m_freq_bin','cardlineused_freq_bin',
-#                              'pcr_other_balance_freq_bin','cardlineused_3m_freq_bin','register_duration_freq_bin',
-#                              'cardline_freq_bin','p2p_1m_freq_bin'])
+end_col=remove_list(end_col,['query_num_3m_freq_bin','cardline_freq_bin','cardline_3m_freq_bin','cardlineused_3m_freq_bin','cardlineused_freq_bin',
+                             'pcr_loanamt_freq_bin','cardline_userate_3m_freq_bin','p2p_1m_freq_bin','platform_count_1m_freq_bin',
+                             'pcr_other_balance_freq_bin','platform_count_3m_freq_bin','td_score_freq_bin','p2p_3m_freq_bin'])
+
+
 
 '''
 多变量共线性检测：VIF（方差膨胀因子）
@@ -150,6 +146,7 @@ matx = np.matrix(end_user_info[end_col])
 for i in range(len(end_col)):
     vif=variance_inflation_factor(matx,i)
     print(end_col[i],vif)
+
 
 
 def vif(matx):
@@ -163,6 +160,7 @@ def vif(matx):
     return max_vif
 
 
+
 '''
 for i in range(len(end_var_list)):
     new_list = end_var_list.copy()
@@ -173,9 +171,6 @@ for i in range(len(end_var_list)):
 
     print(vifs)
 '''
-
-
-#print(x_train,x_test)
 
 
 '''
@@ -250,6 +245,7 @@ plt.show()
 coef_dict={}
 for key,value in zip(end_var_list,coef[0]):
     coef_dict[key]=value
+
 
 #把截距和斜率值放入woe的结果集中
 for var,key in zip(mode_woe_df['variable'],mode_woe_df['class']):

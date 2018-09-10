@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b3f443de-8390-4a52-878c-dd3b542ee6f6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/array_couputer.py" afterPath="$PROJECT_DIR$/array_couputer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py" afterPath="$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_process/feature_handle.py" afterPath="$PROJECT_DIR$/data_process/feature_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_process/list_process.py" afterPath="$PROJECT_DIR$/data_process/list_process.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_function/model_plot.py" afterPath="$PROJECT_DIR$/plot_function/model_plot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample.py" afterPath="$PROJECT_DIR$/sample.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/score_card_version1/result_check.py" afterPath="$PROJECT_DIR$/score_card_version1/result_check.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/score_card_version1/split_bin.py" afterPath="$PROJECT_DIR$/score_card_version1/split_bin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/score_card_version1/test_file.py" afterPath="$PROJECT_DIR$/score_card_version1/test_file.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/score_card_version1/woe_information.py" afterPath="$PROJECT_DIR$/score_card_version1/woe_information.py" />
     </list>
@@ -27,7 +19,7 @@
       <file leaf-file-name="array_couputer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/array_couputer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
+            <state relative-caret-position="559">
               <caret line="40" column="8" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
               <folding>
                 <element signature="e#36#55#0" expanded="true" />
@@ -39,8 +31,8 @@
       <file leaf-file-name="newuser_marketing_credithands_v4.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/marketing_model/newuser_marketing_credithands_v4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="50" />
+            <state relative-caret-position="241">
+              <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
               <folding>
                 <element signature="e#36#55#0" expanded="true" />
               </folding>
@@ -51,8 +43,8 @@
       <file leaf-file-name="test_file.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/score_card_version1/test_file.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1533">
-              <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+            <state relative-caret-position="339">
+              <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
               <folding>
                 <element signature="e#109#127#0" expanded="true" />
               </folding>
@@ -63,7 +55,7 @@
       <file leaf-file-name="result_check.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/score_card_version1/result_check.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
+            <state relative-caret-position="405">
               <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
               <folding>
                 <element signature="e#1#20#0" expanded="true" />
@@ -75,7 +67,7 @@
       <file leaf-file-name="function_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/score_card_version1/function_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-271">
+            <state relative-caret-position="-229">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -85,8 +77,8 @@
       <file leaf-file-name="woe_information.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/score_card_version1/woe_information.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="134" column="24" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
+            <state relative-caret-position="413">
+              <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -97,9 +89,11 @@
       <file leaf-file-name="split_bin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/score_card_version1/split_bin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="58">
+              <caret line="144" column="24" lean-forward="true" selection-start-line="144" selection-start-column="24" selection-end-line="144" selection-end-column="24" />
+              <folding>
+                <element signature="e#1#20#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,7 +101,7 @@
       <file leaf-file-name="psi_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/score_card_version1/psi_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
+            <state relative-caret-position="116">
               <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="54" />
               <folding />
             </state>
@@ -185,19 +179,19 @@
         <option value="$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py" />
         <option value="$PROJECT_DIR$/data_process/list_process.py" />
         <option value="$PROJECT_DIR$/score_card_version1/split_bin.py" />
-        <option value="$PROJECT_DIR$/score_card_version1/woe_information.py" />
         <option value="$PROJECT_DIR$/score_card_version1/result_check.py" />
         <option value="$PROJECT_DIR$/array_couputer.py" />
         <option value="$PROJECT_DIR$/data_process/feature_handle.py" />
+        <option value="$PROJECT_DIR$/score_card_version1/woe_information.py" />
         <option value="$PROJECT_DIR$/score_card_version1/test_file.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="323" />
-    <option name="y" value="108" />
-    <option name="width" value="1258" />
-    <option name="height" value="829" />
+    <option name="x" value="61" />
+    <option name="y" value="81" />
+    <option name="width" value="1724" />
+    <option name="height" value="988" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -268,20 +262,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="score_card_version1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MachineLearning" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="machine_learning" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data_process" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -536,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1535626301885</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update1.0.0">
+      <created>1536305881738</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1536305881740</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -581,14 +568,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="323" y="108" width="1258" height="829" extended-state="0" />
-    <editor active="true" />
+    <frame x="61" y="81" width="1724" height="988" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17927632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1296076" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3895921" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32770744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36206895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32674572" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25318247" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -635,7 +621,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update1.0.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="update1.0.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -967,40 +954,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/score_card_version1/psi_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/score_card_version1/woe_information.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="134" column="24" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/score_card_version1/function_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-271">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/score_card_version1/split_bin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/score_card_version1/preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-15">
@@ -1011,11 +964,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/array_couputer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
+        <state relative-caret-position="559">
           <caret line="40" column="8" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
           <folding>
             <element signature="e#36#55#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/marketing_model/newuser_marketing_credithands_v4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+          <folding>
+            <element signature="e#36#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/score_card_version1/psi_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,7 +1000,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/score_card_version1/result_check.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
+        <state relative-caret-position="405">
           <caret line="44" column="12" lean-forward="true" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
           <folding>
             <element signature="e#1#20#0" expanded="true" />
@@ -1037,20 +1008,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/marketing_model/newuser_marketing_credithands_v4.py">
+    <entry file="file://$PROJECT_DIR$/score_card_version1/split_bin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="50" />
+        <state relative-caret-position="58">
+          <caret line="144" column="24" lean-forward="true" selection-start-line="144" selection-start-column="24" selection-end-line="144" selection-end-column="24" />
           <folding>
-            <element signature="e#36#55#0" expanded="true" />
+            <element signature="e#1#20#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/score_card_version1/woe_information.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/score_card_version1/function_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-229">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/score_card_version1/test_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1533">
-          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+        <state relative-caret-position="339">
+          <caret line="133" column="0" lean-forward="true" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
           <folding>
             <element signature="e#109#127#0" expanded="true" />
           </folding>

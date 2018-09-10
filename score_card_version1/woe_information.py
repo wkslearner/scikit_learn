@@ -12,7 +12,6 @@ def woe_informationvalue(dataframe,x_key,y_key):
     good_sum = dataframe[dataframe[y_key] == 0][y_key].count()
     bad_sum = dataframe[dataframe[y_key] == 1][y_key].count()
 
-
     woe_list={}
     information_value=0
     for var in x_category:
@@ -41,7 +40,8 @@ def woe_informationvalue(dataframe,x_key,y_key):
         information_value=information_value+dg_db_woe
         last_dict={}
         last_dict['woe']=round(woe,3)
-        last_dict['count']=bad_count
+        last_dict['bad_count']=bad_count
+        last_dict['good_count']=good_count
 
 
         woe_list[var]=last_dict
@@ -71,11 +71,12 @@ def get_woe_information(dataframe,variable_list,target_var):
         first_layer = woe_dict[var]
         for key in first_layer.keys():
             value = first_layer[key]['woe']
-            count = first_layer[key]['count']
-            woe_list.append([var, key, count,value])
+            bad_count = first_layer[key]['bad_count']
+            good_count= first_layer[key]['good_count']
+            woe_list.append([var, key, bad_count,good_count,value])
 
 
-    woe_df = pd.DataFrame(woe_list, columns=['variable', 'class','bad_count','woe'])
+    woe_df = pd.DataFrame(woe_list, columns=['variable', 'class','bad_count','good_count','woe'])
     information_df = pd.DataFrame({'variable': variable_list, 'information_value': information_list},
                                   columns=['variable', 'information_value'])
 
@@ -109,6 +110,7 @@ def get_r_square(x, y, degree):
     return r_square
 
 
+
 '''相关性检验'''
 def regression_analysis(dataframe,variable_list):
     '''
@@ -133,3 +135,7 @@ def regression_analysis(dataframe,variable_list):
                 relative_list.append(ls)
 
     return relative_list
+
+
+
+
