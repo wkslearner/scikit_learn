@@ -4,9 +4,10 @@
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
+from sklearn.metrics import roc_curve,auc,roc_auc_score
 
 
-def PlotKS(preds, labels, n, asc):
+def plot_KS(preds, labels, n, asc):
     # preds is score: asc=1
     # preds is prob: asc=0
     # n 为线条的细粒度
@@ -84,4 +85,21 @@ def PlotKS(preds, labels, n, asc):
 
     plt.show()
 
-    return ksds
+    #return ksds
+
+
+
+def plot_ROC(preds,labels):
+
+    fpr, tpr, threshold = roc_curve(labels, preds)
+    roc_auc = auc(fpr, tpr)
+
+    plt.title('Receiver Operating Characteristic')
+    plt.plot(fpr, tpr, 'b', label='AUC = %0.2f' % roc_auc)
+    plt.legend(loc='lower right')
+    plt.plot([0, 1], [0, 1], 'r--')
+    plt.xlim([0, 1])
+    plt.ylim([0, 1])
+    plt.ylabel('True Positive Rate')
+    plt.xlabel('False Positive Rate')
+    plt.show()
