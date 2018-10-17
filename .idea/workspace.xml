@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3f443de-8390-4a52-878c-dd3b542ee6f6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/algorithm/softmax_classifier.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/line_mode/cost_function.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py" afterPath="$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_sample/random_sample.py" afterPath="$PROJECT_DIR$/data_sample/random_sample.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/marketing_model/newuser_marketing_credithands_v4.py" afterPath="$PROJECT_DIR$/marketing_model/newuser_marketing_credithands_v4.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/score_card/scorecard.py" afterPath="$PROJECT_DIR$/score_card/scorecard.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/score_card_version1/test_file.py" afterPath="$PROJECT_DIR$/score_card_version1/test_file.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/score_card_version1/woe_information.py" afterPath="$PROJECT_DIR$/score_card_version1/woe_information.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -529,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1536724037636</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update1.0.0">
+      <created>1539742879379</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1539742879382</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
