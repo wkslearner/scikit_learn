@@ -22,6 +22,12 @@ import statsmodels.api as sm
 from score_card_version1.result_check import *
 from sklearn.cross_validation import train_test_split
 from data_process.list_process import remove_list
+from plot_function.model_plot import plot_KS,plot_ROC
+from data_sample.random_sample import RandomSample
+from sklearn import metrics
+from sklearn.model_selection import learning_curve
+from sklearn import preprocessing
+from imblearn.over_sampling import SMOTE
 
 
 df=pd.read_excel('/Users/andpay/Documents/job/model/scorecard_model/scorecard_model_train_v2.xlsx')
@@ -31,6 +37,8 @@ end_user_info.loc[end_user_info['over_dueday']<30,'cate']=0
 end_user_info['cardline_userate']=end_user_info['cardlineused']/end_user_info['cardline']
 end_user_info['cardline_userate_3m']=end_user_info['cardlineused_3m']/end_user_info['cardline_3m']
 
+print(end_user_info['over_dueday'].groupby(end_user_info['cate']).count())
+
 var_list=['txn_avgamt_6m','txn_count_6m','query_num_3m','cardline','cardline_3m','pcr_loanamt','pcr_loanamt_3m',
           'pcr_other_balance','pcr_over_otheramt','pcr_over_amt','td_score','p2p_1m','p2p_3m','p2p_7d','platform_count_1m',
           'platform_count_3m','platform_count_7d','normal_consume_1m','normal_consume_3m','normal_consume_7d','net_finace_1m',
@@ -38,7 +46,17 @@ var_list=['txn_avgamt_6m','txn_count_6m','query_num_3m','cardline','cardline_3m'
           'big_consume_3m','big_consume_7d','small_loan_1m','small_loan_3m','small_loan_7d','bank_consume_1m','bank_consume_3m',
           'bank_consume_7d']
 
+
 column=end_user_info.columns
+print(end_user_info.shape)
+
+
+# 对好样本进行随机欠采样
+# random_sample=RandomSample(np.array(end_user_info[end_user_info['cate']==0]),0.3).random_under_sample()
+# random_sample_df=pd.DataFrame(random_sample,columns=end_user_info.columns)
+# end_user_info=pd.concat([end_user_info[end_user_info['cate']==1],random_sample_df],axis=0)
+# print(end_user_info.shape)
+
 
 '''缺失值检测'''
 unuse_list=check_nullvalue(end_user_info)
@@ -46,10 +64,10 @@ end_user_info=end_user_info.drop(unuse_list,axis=1)
 new_column=end_user_info.columns
 
 
-
 cat_var=['id_city']
 con_var=remove_list(new_column,cat_var+['over_dueday','cate'])
 end_user_info=disper_split(end_user_info,cat_var)
+
 
 
 '''变量间相关性检验'''
@@ -89,6 +107,7 @@ def manual_mergebin(dataframe,merge_var,merge_bin=[],split_point_dict={}):
 
     return dataframe,split_point_dict
 
+
 end_user_info,split_point_chi=manual_mergebin(end_user_info,'td_score_freq_bin',merge_bin=[2,3,4],split_point_dict=split_point_chi)
 end_user_info,split_point_chi=manual_mergebin(end_user_info,'txn_count_6m_freq_bin',merge_bin=[2,3],split_point_dict=split_point_chi)
 print(split_point_chi)
@@ -99,13 +118,18 @@ woe_df,information_df=get_woe_information(end_user_info,end_col,'cate')
 for var,key in zip(woe_df['variable'],woe_df['class']):
     woe_df.loc[(woe_df['variable']==var)&(woe_df['class']==key),'category']= split_point_chi[var][key]
 
-#print(woe_df[woe_df['variable'].isin(['USERATE_freq_bin','TD_SCORE_freq_bin'])])
+
+# print(woe_df[woe_df['variable'].isin(['USERATE_freq_bin','TD_SCORE_freq_bin'])])
+
+# excel_writer=pd.ExcelWriter('/Users/andpay/Documents/job/model/scorecard_model/woe_iv.xlsx',engine='xlsxwriter')
+# woe_df.to_excel(excel_writer,'woe',index=False)
+# information_df.to_excel(excel_writer,'informationvalue',index=False)
+# excel_writer.save()
 
 
-excel_writer=pd.ExcelWriter('/Users/andpay/Documents/job/model/scorecard_model/woe_iv.xlsx',engine='xlsxwriter')
-woe_df.to_excel(excel_writer,'woe',index=False)
-information_df.to_excel(excel_writer,'informationvalue',index=False)
-excel_writer.save()
+#smote算法进行数据过采样
+# over_sample=SMOTE(ratio=0.8)
+# x,y=over_sample.fit_sample(end_user_info[end_col],end_user_info['cate'])
 
 
 '''随机森林挑选变量'''
@@ -130,12 +154,13 @@ print(var_importance)
 # features_selection = [k[0] for k in featureImportanceSorted] #获取排名靠前的12个特征变量
 # print(features_selection)
 
-
+end_user_info=pd.DataFrame(x,columns=end_col)
+end_user_info['cate']=y
 
 #移除方差膨胀因子高的变量
 end_col=remove_list(end_col,['query_num_3m_freq_bin','cardline_freq_bin','cardline_3m_freq_bin','cardlineused_3m_freq_bin','cardlineused_freq_bin',
                              'pcr_loanamt_freq_bin','cardline_userate_3m_freq_bin','p2p_1m_freq_bin','platform_count_1m_freq_bin',
-                             'pcr_other_balance_freq_bin','platform_count_3m_freq_bin','td_score_freq_bin','p2p_3m_freq_bin'])
+                             'pcr_other_balance_freq_bin','platform_count_3m_freq_bin'])
 
 
 
@@ -158,7 +183,6 @@ def vif(matx):
     max_vif=max(vif_list)
 
     return max_vif
-
 
 
 '''
@@ -186,7 +210,6 @@ print(coef,intercept,KS_1)
 '''
 
 
-
 '''逻辑回归'''
 end_user_info['intercept'] = [1]*end_user_info.shape[0]
 LR = sm.Logit(end_user_info['cate'].astype(int),end_user_info[end_col]).fit()
@@ -194,8 +217,21 @@ summary = LR.summary()
 end_user_info['prob']=LR.predict(end_user_info[end_col])
 ks_dict=KS_AR(end_user_info,'prob','cate')
 KS=ks_dict['KS']
-auc = roc_auc_score(end_user_info['cate'].astype(int),end_user_info['prob'])
+auc_result = roc_auc_score(end_user_info['cate'].astype(int),end_user_info['prob'])
 
+y_train_pred_xgb = LR.predict(end_user_info[end_col])  #.apply(lambda x: 1 if x>=0.5 else 0)
+
+
+# tree_train = metrics.accuracy_score(end_user_info['cate'].astype(int), y_train_pred_xgb)
+
+# print('XG Boosting train/test accuracies %.3f' % tree_train)
+print('XG Boosting train/test auc %.3f '%(metrics.roc_auc_score(end_user_info['cate'].astype(int),y_train_pred_xgb)))
+# print('XG Boosting train/test Recall %.3f' % (metrics.recall_score(end_user_info['cate'].astype(int),y_train_pred_xgb)))
+# print('XG Boosting train/test precision %.3f' % (metrics.precision_score(end_user_info['cate'].astype(int),y_train_pred_xgb)))
+
+
+#画KS曲线信息
+# ks_plot=plot_KS(end_user_info['prob'],end_user_info['cate'],10000,asc=0)
 
 
 basePoint = 600
@@ -205,7 +241,7 @@ end_user_info['score'] = end_user_info['prob'].map(lambda x:Prob2Score(x, basePo
 
 
 print(summary)
-print(KS,auc)
+print(KS,auc_result)
 
 
 '''查看分数分布图'''
@@ -221,23 +257,21 @@ mode_woe_df,mode_information_df=get_woe_information(end_user_info,end_col,'cate'
 
 
 '''画ROC曲线'''
+#probs=LR.predict_proba(end_user_info[end_col])
 
-'''
-probs=LR.predict_proba(end_user_info[end_var_list])
+# fpr,tpr,threshold=roc_curve(end_user_info['cate'].astype(int),end_user_info['prob'])
+# roc_auc = auc(fpr, tpr)
 
-fpr,tpr,threshold=roc_curve(end_user_info['CATEGORY'].astype(int),probs[:,1])
-roc_auc = auc(fpr, tpr)
+# plt.title('Receiver Operating Characteristic')
+# plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % roc_auc)
+# plt.legend(loc = 'lower right')
+# plt.plot([0, 1], [0, 1],'r--')
+# plt.xlim([0, 1])
+# plt.ylim([0, 1])
+# plt.ylabel('True Positive Rate')
+# plt.xlabel('False Positive Rate')
+# plt.show()
 
-plt.title('Receiver Operating Characteristic')
-plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % roc_auc)
-plt.legend(loc = 'lower right')
-plt.plot([0, 1], [0, 1],'r--')
-plt.xlim([0, 1])
-plt.ylim([0, 1])
-plt.ylabel('True Positive Rate')
-plt.xlabel('False Positive Rate')
-plt.show()
-'''
 
 
 '''

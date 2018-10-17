@@ -112,7 +112,7 @@ def get_r_square(x, y, degree):
 
 
 '''相关性检验'''
-def regression_analysis(dataframe,variable_list):
+def regression_analysis(dataframe,variable_list,rsquare_limit=0.5):
     '''
     :param dataframe: 目标数据框
     :param variable_list: 所有求解的变量列表
@@ -130,7 +130,7 @@ def regression_analysis(dataframe,variable_list):
             var_2 = mid_df[son_key].astype(float)
             slope, intercept, r_value, p_value, std_err = stats.linregress(var_1, var_2)
             r_square = get_r_square(var_1, var_2, 1)
-            if p_value < 0.05 and r_square > 0.5:
+            if p_value < 0.05 and r_square > rsquare_limit:
                 ls = [key, son_key, p_value, r_square]
                 relative_list.append(ls)
 

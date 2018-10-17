@@ -6,8 +6,6 @@ import numpy as np
 import random
 
 
-
-
 class RandomSample():
 
     def __init__(self,dataset,coefficient):
@@ -49,7 +47,6 @@ class RandomSample():
                 result_data =np.vstack((result_data,mid_data))
 
         return result_data
-
 
 
 

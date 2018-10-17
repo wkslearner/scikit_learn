@@ -11,7 +11,7 @@ from imblearn.combine import SMOTEENN
 from imblearn.over_sampling import RandomOverSampler,SMOTE,ADASYN
 from sklearn.model_selection import GridSearchCV, KFold ,RandomizedSearchCV
 from sklearn.metrics import make_scorer, fbeta_score, accuracy_score,recall_score
-from plot_function.model_plot import PlotKS
+from plot_function.model_plot import plot_KS
 import time
 
 start_time=time.time()
@@ -230,7 +230,7 @@ print(matric_xgb_test)
 
 #画ks曲线
 test_pred_prob=XGC.predict_proba(x_test)[:,1]
-end_plot=PlotKS(test_pred_prob,y_test,10000,asc=0)
+end_plot=plot_KS(test_pred_prob,y_test,10000,asc=0)
 
 
 newuser_dataset['prob_xgc']=XGC.predict_proba(newuser_dataset[model_var_list])[:,1]

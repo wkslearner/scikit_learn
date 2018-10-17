@@ -78,7 +78,7 @@ folderOfData = '/Users/LiuSiyue/Code/xiaoxiang/第3期/Data/'
 
 
 allData = pd.read_csv(folderOfData + 'application.csv',header = 0, encoding = 'latin1')
-allData['term'] = allData['term'].apply(lambda x: int(x.replace(' months','')))
+allData['term'] = allData['term'].apply(lambda x: int(x.replace('months','')))
 
 # 处理标签：Fully Paid是正常用户；Charged Off是违约用户
 allData['y'] = allData['loan_status'].map(lambda x: int(x == 'Charged Off'))
@@ -101,14 +101,13 @@ testDataFile = open(folderOfData+'testData.pkl','w')
 pickle.dump(testData, testDataFile)
 testDataFile.close()
 
+
 '''
 第一步：数据预处理，包括
 （1）数据清洗
 （2）格式转换
 （3）确实值填补
 '''
-
-
 
 
 # 将带％的百分比变为浮点数
@@ -131,6 +130,8 @@ trainData['mths_since_last_record_clean'] = trainData['mths_since_last_record'].
 
 trainData['pub_rec_bankruptcies_clean'] = trainData['pub_rec_bankruptcies'].map(lambda x:MakeupMissing(x))
 
+
+
 '''
 第二步：变量衍生
 '''
@@ -139,6 +140,7 @@ trainData['limit_income'] = trainData.apply(lambda x: x.loan_amnt / x.annual_inc
 
 # 考虑earliest_cr_line到申请日期的跨度，以月份记
 trainData['earliest_cr_to_app'] = trainData.apply(lambda x: MonthGap(x.earliest_cr_line_clean,x.app_date_clean), axis = 1)
+
 
 
 '''
@@ -155,6 +157,8 @@ trainData['earliest_cr_to_app'] = trainData.apply(lambda x: MonthGap(x.earliest_
     （b1）如果每种类别同时包含好坏样本，无需分箱
     （b2）如果有类别只包含好坏样本的一种，需要合并
 '''
+
+
 num_features = ['int_rate_clean','emp_length_clean','annual_inc', 'dti', 'delinq_2yrs', 'earliest_cr_to_app','inq_last_6mths', \
                 'mths_since_last_record_clean', 'mths_since_last_delinq_clean','open_acc','pub_rec','total_acc','limit_income','earliest_cr_to_app']
 
@@ -166,7 +170,7 @@ less_value_features = []
 # 第一步，检查类别型变量中，哪些变量取值超过5
 for var in cat_features:
     valueCounts = len(set(trainData[var]))
-    print valueCounts
+    print (valueCounts)
     if valueCounts > 5:
         more_value_features.append(var)  #取值超过5的变量，需要bad rate编码，再用卡方分箱法进行分箱
     else:
