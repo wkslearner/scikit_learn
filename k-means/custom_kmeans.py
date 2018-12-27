@@ -45,12 +45,12 @@ def kmeans(dataSet, k):
 
     while clusterChanged:
         clusterChanged = False
-        ## 循环样本
+        # 循环样本
         for i in range(numSamples):
             minDist = 100000.0
             minIndex = 0
-            ## 循环每个中心点
-            ## step 2: 求每个中心点与第i个样本距离，找到最小距离的点
+            # 循环每个中心点
+            # step 2: 求每个中心点与第i个样本距离，找到最小距离的点
             for j in range(k):
                 distance = euclDistance(centroids[j, :], dataSet[i, :])
                 if distance < minDist:
