@@ -57,6 +57,7 @@ def get_woe_information(dataframe,variable_list,target_var):
     :param target_var: 目标变量
     :return:woe和iv值 数据框 
     '''
+
     woe_dict={}
     information_list=[]
     for var in variable_list:

@@ -14,22 +14,33 @@ def KS_AR(df, score, target):
     :return:
     '''
 
+    #计算样本比例
     total = df.groupby([score])[target].count()
     bad = df.groupby([score])[target].sum()
     all = pd.DataFrame({'total':total, 'bad':bad})
     all['good'] = all['total'] - all['bad']
     all[score] = all.index
+
+    #按照违约概率进行排序
     all = all.sort_values(by=score,ascending=False)
     all.index = range(len(all))
+
+    #计算累计坏样本和累计好样本占比
     all['badCumRate'] = all['bad'].cumsum() / all['bad'].sum()
     all['goodCumRate'] = all['good'].cumsum() / all['good'].sum()
     all['totalPcnt'] = all['total'] / all['total'].sum()
+
     arList = [0.5 * all.loc[0, 'badCumRate'] * all.loc[0, 'totalPcnt']]
+
+    #每添加一个样本坏样本和好样本比例上升情况
     for j in range(1, len(all)):
         ar0 = 0.5 * sum(all.loc[j - 1:j, 'badCumRate']) * all.loc[j, 'totalPcnt']
         arList.append(ar0)
+
     arIndex = (2 * sum(arList) - 1) / (all['good'].sum() * 1.0 / all['total'].sum())
+
     KS = all.apply(lambda x: x.badCumRate - x.goodCumRate, axis=1)
+
     return {'AR':arIndex, 'KS': max(KS)}
 
 

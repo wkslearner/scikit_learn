@@ -444,7 +444,7 @@ saveModel.close()
 #尝试用L1约束#
 ## use cross validation to select the best regularization parameter
 multi_analysis = multi_analysis_vars_1
-X = trainData[multi_analysis]   #by default  LogisticRegressionCV() fill fit the intercept
+X = trainData[multi_analysis]
 X = np.matrix(X)
 y = trainData['y']
 y = np.array(y)

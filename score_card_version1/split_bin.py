@@ -164,6 +164,7 @@ def basic_splitbin(df,var,numOfSplit = 5, method = 'equal_freq'):
     :param method: 分箱方法，'equal freq'：，默认是等频，否则是等距
     :return:分割点列表
     '''
+
     if method == 'equal_freq':
         notnull_df = df.loc[~df[var].isnull()]
         N = notnull_df.shape[0]
@@ -187,6 +188,7 @@ def basic_splitbin(df,var,numOfSplit = 5, method = 'equal_freq'):
 
 
 '''-------------------以下是卡方分箱法————————————————————————————'''
+
 
 '''重塑数据格式，把类似[4.5, 0.0, 1.0]转换为(4.5, [1.0, 0, 0])以便计算，
    表示在4.5区间内，类别为0的数量是1'''
@@ -256,6 +258,7 @@ def chi2(A):
 '''下面的程序可以看出，合并一个区间之后相邻区间的卡方值进行了重新计算，而原作者论文中是计算一次后根据大小直接进行合并的
 下面在合并时候只是根据相邻最小的卡方值进行合并的，这个在实际操作中还是比较好的
 '''
+
 def ChiMerge(dataframe,var,target_var,max_interval=5):
     dataframe['assist_col'] = 1
 
@@ -273,11 +276,13 @@ def ChiMerge(dataframe,var,target_var,max_interval=5):
     while num_interval>max_interval:
         num_pair = num_interval -1
         chi_values = []
+
         ''' 计算相邻区间的卡方值'''
         for i in range(num_pair):
             arr = [log_tuple[i][1],log_tuple[i+1][1]]
             chi_values.append(chi2(arr))
         min_chi = min(chi_values)
+
         '''根据卡方结果对数据进行合并'''
         for i in range(num_pair - 1,-1,-1):
             if chi_values[i] == min_chi:

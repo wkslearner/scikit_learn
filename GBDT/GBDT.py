@@ -89,6 +89,7 @@ def KS(df, score, target):
     all['badCumRate'] = all['bad'].cumsum() / all['bad'].sum()
     all['goodCumRate'] = all['good'].cumsum() / all['good'].sum()
     KS = all.apply(lambda x: x.badCumRate - x.goodCumRate, axis=1)
+
     return max(KS)
 
 

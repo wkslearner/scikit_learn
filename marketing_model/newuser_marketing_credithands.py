@@ -191,9 +191,9 @@ x_test,y_test=testdata[var_list],testdata['cate']
 
 
 #超参数最优化
-# parameter_tree = {'max_depth': range(3, 10),'n_estimators':range(100,200,10)}
-# best_param=grid_search(x_train=x_train,y_train=y_train,kfold_n=5,param_dict=parameter_tree,score_type=recall_score)
-# print(best_param)
+parameter_tree = {'max_depth': range(3, 10),'n_estimators':range(100,200,10)}
+best_param=grid_search(x_train=x_train,y_train=y_train,kfold_n=5,param_dict=parameter_tree,score_type=recall_score)
+print(best_param)
 
 
 #超参数随机搜索
@@ -231,6 +231,7 @@ print('XG Boosting train/test precision %.3f/%.3f' % (metrics.precision_score(y_
                                                       metrics.precision_score(y_test, y_test_pred_xgb)))
 
 
+
 #结果交叉表
 matric_xgb_train=pd.crosstab(y_train,y_train_pred_xgb, rownames=['actual'], colnames=['preds'])
 matric_xgb_test=pd.crosstab(y_test,y_test_pred_xgb, rownames=['actual'], colnames=['preds'])
@@ -238,9 +239,11 @@ print(matric_xgb_train)
 print(matric_xgb_test)
 
 
+
 newuser_dataset['prob_xgc']=XGC.predict_proba(newuser_dataset[var_list])[:,1]
 #first_target_dataset['prob_xgc']=XGC.predict_proba(target_dataset[var_list])[:,1]
 #target_dataset['prob_xgc']=XGC.predict_proba(target_dataset[var_list])[:,1]
+
 
 #first_target_dataset=first_target_dataset.astype(str)
 # excel_writer=pd.ExcelWriter('/Users/andpay/Documents/job/model/newuser_marketing_credithands/model_practice/phonecall_userlist_result.xlsx',engine='xlsxwriter')

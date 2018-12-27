@@ -35,7 +35,6 @@ testData['earliest_cr_line_clean'] = testData['earliest_cr_line'].map(lambda x: 
 
 # 处理mths_since_last_delinq。注意原始值中有0，所以用－1代替缺失
 testData['mths_since_last_delinq_clean'] = testData['mths_since_last_delinq'].map(lambda x:MakeupMissing(x))
-
 testData['mths_since_last_record_clean'] = testData['mths_since_last_record'].map(lambda x:MakeupMissing(x))
 
 testData['pub_rec_bankruptcies_clean'] = testData['pub_rec_bankruptcies'].map(lambda x:MakeupMissing(x))

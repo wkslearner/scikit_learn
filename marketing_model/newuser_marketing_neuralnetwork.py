@@ -19,6 +19,7 @@ parser.add_argument('--train_steps', default=5000, type=int,
                     help='number of training steps')
 
 
+
 '''构建dataset对象的训练数据'''
 def train_input_fn(features, labels, batch_size):
     """An input function for training"""

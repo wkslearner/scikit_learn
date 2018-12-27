@@ -114,7 +114,6 @@ print(split_point_chi)
 
 
 woe_df,information_df=get_woe_information(end_user_info,end_col,'cate')
-
 for var,key in zip(woe_df['variable'],woe_df['class']):
     woe_df.loc[(woe_df['variable']==var)&(woe_df['class']==key),'category']= split_point_chi[var][key]
 
@@ -196,11 +195,9 @@ for i in range(len(end_var_list)):
     print(vifs)
 '''
 
-
 '''
 locgit=LogisticRegression(fit_intercept = False,C = 1e9)
 locgit.fit(the_end_df[end_var_list],the_end_df['CATEGORY'].astype(int))
-
 intercept=locgit.intercept_
 coef=locgit.coef_
 the_end_df['prob_1']=locgit.predict_proba(the_end_df[end_var_list])[:,1]
@@ -219,12 +216,12 @@ ks_dict=KS_AR(end_user_info,'prob','cate')
 KS=ks_dict['KS']
 auc_result = roc_auc_score(end_user_info['cate'].astype(int),end_user_info['prob'])
 
-y_train_pred_xgb = LR.predict(end_user_info[end_col])  #.apply(lambda x: 1 if x>=0.5 else 0)
-
-
+y_train_pred_xgb = LR.predict(end_user_info[end_col])
+#.apply(lambda x: 1 if x>=0.5 else 0)
 # tree_train = metrics.accuracy_score(end_user_info['cate'].astype(int), y_train_pred_xgb)
-
 # print('XG Boosting train/test accuracies %.3f' % tree_train)
+
+
 print('XG Boosting train/test auc %.3f '%(metrics.roc_auc_score(end_user_info['cate'].astype(int),y_train_pred_xgb)))
 # print('XG Boosting train/test Recall %.3f' % (metrics.recall_score(end_user_info['cate'].astype(int),y_train_pred_xgb)))
 # print('XG Boosting train/test precision %.3f' % (metrics.precision_score(end_user_info['cate'].astype(int),y_train_pred_xgb)))
