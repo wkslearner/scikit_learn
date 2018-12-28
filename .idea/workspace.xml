@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3f443de-8390-4a52-878c-dd3b542ee6f6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MachineLearning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MachineLearning.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b3f443de-8390-4a52-878c-dd3b542ee6f6" name="Default" comment="update1.0.0">
+      <change afterPath="$PROJECT_DIR$/k-means/DBSCAN.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k-means/em_cluster.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k-means/sklearn_kmeans.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plot_function/cluster_plot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GBDT/GBDT.py" beforeDir="false" afterPath="$PROJECT_DIR$/GBDT/GBDT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desection_tree/coutom_desciontree.py" beforeDir="false" afterPath="$PROJECT_DIR$/desection_tree/coutom_desciontree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marketing_model/newuser_marketing_credithands.py" beforeDir="false" afterPath="$PROJECT_DIR$/marketing_model/newuser_marketing_credithands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marketing_model/newuser_marketing_neuralnetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/marketing_model/newuser_marketing_neuralnetwork.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score_card/scorecard test.py" beforeDir="false" afterPath="$PROJECT_DIR$/score_card/scorecard test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score_card/scorecard.py" beforeDir="false" afterPath="$PROJECT_DIR$/score_card/scorecard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score_card_version1/result_check.py" beforeDir="false" afterPath="$PROJECT_DIR$/score_card_version1/result_check.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score_card_version1/split_bin.py" beforeDir="false" afterPath="$PROJECT_DIR$/score_card_version1/split_bin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/sample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/score_card_version1/test_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/score_card_version1/test_file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score_card_version1/woe_information.py" beforeDir="false" afterPath="$PROJECT_DIR$/score_card_version1/woe_information.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,23 +28,23 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="1" />
-          <entry key="py" value="37" />
+          <entry key="py" value="55" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="37" />
+          <entry key="Python" value="55" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="536" />
+          <entry key="py" value="2982" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="536" />
+          <entry key="Python" value="2982" />
         </counts>
       </usages-collector>
     </session>
@@ -58,22 +52,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-              <folding>
-                <element signature="e#36#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/score_card_version1/test_file.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="202" column="49" lean-forward="true" selection-start-line="202" selection-start-column="49" selection-end-line="202" selection-end-column="49" />
+            <state relative-caret-position="429">
+              <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
               <folding>
                 <element signature="e#109#127#0" expanded="true" />
               </folding>
@@ -82,10 +64,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/score_card_version1/result_check.py">
+        <entry file="file://$PROJECT_DIR$/sample.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
-              <caret line="102" column="21" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
+            <state relative-caret-position="90">
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/k-means/em_cluster.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1143">
+              <caret selection-end-line="3" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/k-means/sklearn_kmeans.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="e#1#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plot_function/cluster_plot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="e#1#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/k-means/DBSCAN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+              <folding>
+                <marker date="1545985010000" expanded="true" signature="978:1037" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,11 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/deep_learning/DNN.py" />
-        <option value="$PROJECT_DIR$/tensorflow_v1/tensorflow_randomforest.py" />
-        <option value="$PROJECT_DIR$/randomforest/randomforestclassify.py" />
-        <option value="$PROJECT_DIR$/user_tag/cate_tag.py" />
-        <option value="$PROJECT_DIR$/user_tag/xgboost_usertag.py" />
         <option value="$PROJECT_DIR$/randomforest/randomforest-apply.py" />
         <option value="$PROJECT_DIR$/user_tag/test.py" />
         <option value="$PROJECT_DIR$/knn/sklearn_knn.py" />
@@ -138,7 +163,6 @@
         <option value="$PROJECT_DIR$/LightGBM/lightGBM.py" />
         <option value="$PROJECT_DIR$/data_process/data_scale.py" />
         <option value="$PROJECT_DIR$/data_sample/SMOTE.py" />
-        <option value="$PROJECT_DIR$/sample.py" />
         <option value="$PROJECT_DIR$/data_process/list_process.py" />
         <option value="$PROJECT_DIR$/array_couputer.py" />
         <option value="$PROJECT_DIR$/data_process/feature_handle.py" />
@@ -155,18 +179,24 @@
         <option value="$PROJECT_DIR$/score_card_version1/result_check.py" />
         <option value="$PROJECT_DIR$/score_card_version1/split_bin.py" />
         <option value="$PROJECT_DIR$/score_card/scorecard test.py" />
-        <option value="$PROJECT_DIR$/score_card_version1/test_file.py" />
         <option value="$PROJECT_DIR$/desection_tree/coutom_desciontree.py" />
         <option value="$PROJECT_DIR$/GBDT/GBDT.py" />
         <option value="$PROJECT_DIR$/score_card/scorecard.py" />
+        <option value="$PROJECT_DIR$/k-means/custom_kmeans.py" />
+        <option value="$PROJECT_DIR$/score_card_version1/test_file.py" />
+        <option value="$PROJECT_DIR$/sample.py" />
+        <option value="$PROJECT_DIR$/k-means/em_cluster.py" />
+        <option value="$PROJECT_DIR$/k-means/DBSCAN.py" />
+        <option value="$PROJECT_DIR$/k-means/sklearn_kmeans.py" />
+        <option value="$PROJECT_DIR$/plot_function/cluster_plot.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1546" />
-    <option name="y" value="182" />
-    <option name="width" value="1246" />
-    <option name="height" value="777" />
+    <option name="x" value="1374" />
+    <option name="y" value="39" />
+    <option name="width" value="1645" />
+    <option name="height" value="920" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -199,6 +229,16 @@
               <item name="MachineLearning" type="b2602c69:ProjectViewProjectNode" />
               <item name="scikit_learn" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MachineLearning" type="b2602c69:ProjectViewProjectNode" />
+              <item name="scikit_learn" type="462c0819:PsiDirectoryNode" />
+              <item name="k-means" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MachineLearning" type="b2602c69:ProjectViewProjectNode" />
+              <item name="scikit_learn" type="462c0819:PsiDirectoryNode" />
+              <item name="plot_function" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -207,7 +247,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="KS&#9;null&#9;null&#10;ks&#9;null&#9;null&#10;onehot&#9;null&#9;null&#10;smote&#9;null&#9;null&#10;SM&#9;FILE&#9;file:///Users/admin/PycharmProjects/scikit_learn/data_sample/SMOTE.py&#10;train_test_split&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/matplotlib/cm.py&#10;KS&#9;null&#9;null&#10;ks&#9;null&#9;null&#10;onehot&#9;null&#9;null&#10;smote&#9;null&#9;null&#10;SM&#9;FILE&#9;file:///Users/admin/PycharmProjects/scikit_learn/data_sample/SMOTE.py&#10;train_test_split&#9;null&#9;null" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="XML" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="python.debugger.dataview.coloredbydefault" value="false" />
@@ -234,7 +274,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.coutom_desciontree">
+  <component name="RunManager" selected="Python.sklearn_kmeans">
+    <configuration name="DBSCAN" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MachineLearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/k-means" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/k-means/DBSCAN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="sklearn" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -248,48 +309,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="array_couputer" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MachineLearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/array_couputer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="behave_scorecard_v1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MachineLearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/behave_scorecard" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -319,7 +338,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="softmax_classifier" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="em_cluster" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -327,11 +346,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/algorithm" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/k-means" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/algorithm/softmax_classifier.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/k-means/em_cluster.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -340,7 +359,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_file" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="sample" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MachineLearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -348,11 +367,32 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/score_card_version1" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/score_card_version1/test_file.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sample.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sklearn_kmeans" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MachineLearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/k-means" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/k-means/sklearn_kmeans.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -427,19 +467,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.xgboost_usertag" />
-      <item itemvalue="Python.behave_scorecard_v1" />
-      <item itemvalue="Python.array_couputer" />
-      <item itemvalue="Python.test_file" />
-      <item itemvalue="Python.softmax_classifier" />
       <item itemvalue="Python.coutom_desciontree" />
+      <item itemvalue="Python.sklearn_kmeans" />
+      <item itemvalue="Python.em_cluster" />
+      <item itemvalue="Python.sample" />
+      <item itemvalue="Python.DBSCAN" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sklearn_kmeans" />
+        <item itemvalue="Python.DBSCAN" />
+        <item itemvalue="Python.em_cluster" />
+        <item itemvalue="Python.sample" />
         <item itemvalue="Python.coutom_desciontree" />
-        <item itemvalue="Python.softmax_classifier" />
-        <item itemvalue="Python.behave_scorecard_v1" />
-        <item itemvalue="Python.test_file" />
-        <item itemvalue="Python.array_couputer" />
       </list>
     </recent_temporary>
   </component>
@@ -524,7 +564,14 @@
       <option name="project" value="LOCAL" />
       <updated>1539842405829</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update1.0.0">
+      <created>1545902705130</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1545902705130</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -569,27 +616,38 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="9" y="35" width="1246" height="777" extended-state="1" />
+    <frame x="1374" y="39" width="1645" height="920" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29877552" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22536945" />
       <window_info id="Structure" order="1" weight="0.25318247" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32806325" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.37518248" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39821884" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37439615" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.397343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32806325" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.17237009" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32806325" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3031401" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3270073" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.329927" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32674572" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32554746" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" x="617" y="253" width="466" height="473" id="Data View" order="3" weight="0.32916972" />
     </layout>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="SHOW_DETAILS" value="true" />
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -601,7 +659,29 @@
                 <collection />
               </option>
               <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
+                <collection>
+                  <UserGroup>
+                    <option name="users">
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </option>
+                  </UserGroup>
+                  <UserGroup>
+                    <option name="users">
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </option>
+                  </UserGroup>
+                  <UserGroup>
+                    <option name="users">
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </option>
+                  </UserGroup>
+                </collection>
               </option>
               <option name="COLUMN_ORDER">
                 <list>
@@ -640,61 +720,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/imblearn/over_sampling/smote.py" />
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/sklearn/utils/validation.py" />
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/imblearn/base.py" />
-    <entry file="file://$PROJECT_DIR$/neural_network/scikitLearn_neuralNetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1797">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sc_lr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2355">
-          <caret line="165" selection-start-line="165" selection-end-line="165" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1456">
-          <caret line="251" lean-forward="true" selection-start-line="251" selection-end-line="251" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/knn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-937">
-          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_handle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_process/list_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_process/feature_handle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="11" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/score_card_version1/function_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-229" />
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/sklearn/metrics/ranking.py" />
     <entry file="file://$PROJECT_DIR$/score_card_version1/psi_test.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -824,13 +849,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_function/model_plot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/score_card_version1/preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
@@ -871,27 +889,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/score_card_version1/result_check.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="102" column="21" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/scipy/stats/_continuous_distns.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
           <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#36#55#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -956,12 +957,134 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/behave_scorecard/behave_scorecard_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="e#36#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sc_lr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2355">
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/score_card_version1/test_file.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="202" column="49" lean-forward="true" selection-start-line="202" selection-start-column="49" selection-end-line="202" selection-end-column="49" />
+        <state relative-caret-position="429">
+          <caret line="154" lean-forward="true" selection-start-line="154" selection-end-line="154" />
           <folding>
             <element signature="e#109#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/numpy/matrixlib/defmatrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-58">
+          <caret line="790" column="48" lean-forward="true" selection-start-line="790" selection-start-column="48" selection-end-line="790" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/k-means/custom_kmeans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <element signature="e#36#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/score_card_version1/result_check.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="102" column="21" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/matplotlib/cm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="8" column="71" lean-forward="true" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+          <folding>
+            <element signature="e#450#466#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_function/model_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+          <folding>
+            <element signature="e#36#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/numpy/core/function_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/sklearn/cluster/dbscan_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="236" column="32" lean-forward="true" selection-start-line="236" selection-start-column="32" selection-end-line="236" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/k-means/em_cluster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1143">
+          <caret selection-end-line="3" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/k-means/DBSCAN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <folding>
+            <marker date="1545985010000" expanded="true" signature="978:1037" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/k-means/sklearn_kmeans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#1#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_function/cluster_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#1#32#0" expanded="true" />
           </folding>
         </state>
       </provider>

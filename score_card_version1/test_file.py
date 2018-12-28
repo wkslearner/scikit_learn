@@ -195,6 +195,7 @@ for i in range(len(end_var_list)):
     print(vifs)
 '''
 
+
 '''
 locgit=LogisticRegression(fit_intercept = False,C = 1e9)
 locgit.fit(the_end_df[end_var_list],the_end_df['CATEGORY'].astype(int))
