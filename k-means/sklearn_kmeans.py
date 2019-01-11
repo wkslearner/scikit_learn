@@ -16,14 +16,12 @@ target=iris.target
 
 train_data=StandardScaler().fit_transform(data)
 
-km=KMeans(n_clusters=4)
+km=KMeans(n_clusters=3)
 km.fit(train_data)
 
 labels=km.labels_
 center=km.cluster_centers_
-
 print(km.inertia_)
-
 plot_cluster_kmeans(data,labels)
 
 

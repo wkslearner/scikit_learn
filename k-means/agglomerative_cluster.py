@@ -24,7 +24,7 @@ target=iris.target
 train_data=StandardScaler().fit_transform(data)
 
 # 凝聚层次聚类，应用对层次聚类树剪枝
-cluster = AgglomerativeClustering(n_clusters=4)
+cluster = AgglomerativeClustering(n_clusters=3)
 cluster.fit(train_data)
 
 labels=cluster.labels_
