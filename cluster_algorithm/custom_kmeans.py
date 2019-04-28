@@ -32,7 +32,7 @@ def initCentroids(dataSet, k):
 arr=array([[1,2,3],[2,1,2],[3,3,2]])
 print(nonzero(arr))
 
-# k-means cluster
+# cluster_algorithm cluster
 def kmeans(dataSet, k):
     numSamples = dataSet.shape[0]  #计算数组的行数
     # first column stores which cluster this sample belongs to,

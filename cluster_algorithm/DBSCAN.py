@@ -4,7 +4,6 @@ Density-based spatial clustering of applications with noise
 基于密度聚类算法（内含噪声）
 '''
 
-
 print(__doc__)
 
 from sklearn.cluster import DBSCAN
@@ -17,6 +16,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 from sklearn.cluster import DBSCAN
 from plot_function.cluster_plot import plot_cluster_DBSCAN
+
 
 iris=load_iris()
 data=iris.data
@@ -48,10 +48,7 @@ core_samples_mask = np.zeros_like(cluster.labels_, dtype=bool)
 #用核心样本索引替换指定位置的值
 core_samples_mask[cluster.core_sample_indices_] = True
 
-
 plot_cluster_DBSCAN(dataset,labels,core_samples_mask)
-
-
 
 
 '''
