@@ -5,7 +5,10 @@ import jieba
 from gensim import corpora,models,similarities
 
 
-all_doc=['北京市朝阳区建国门外大街','北京市建国门外大街5号院','北京市朝阳区外大街5号院']
+all_doc=['北京市朝阳区建国门外大街','北京市建国门外大街5号院',
+        '浙江省金华市武义县浙江省金华市武义县武义县武义县温泉路77号',
+         '北京市朝阳区外大街5号院',
+         '天津市天津市武清区天津市武清区天津市武清区逸仙科技园祥云超市祥云超市']
 
 # 1 分词
 # 1.1 历史比较文档的分词
@@ -17,10 +20,15 @@ for doc in all_doc:
     all_doc_list.append(doc_list)
 
 # 1.2 测试文档的分词
-doc_test="北京市朝阳区建国门外大街5号院"
-doc_test_list = [word for word in jieba.cut_for_search(doc_test)]
-print(doc_test_list)
+doc_test=["北京市朝阳区建国门外大街5号院"]
+# doc_test_list = [word for word in jieba.cut_for_search(doc_test)]
+# print(doc_test_list)
 # doc_test_list = [word for word in jieba.cut(doc_test)]
+
+all_test_list=[]
+for item in doc_test:
+    test_list=[word for word in jieba.cut_for_search(item)]
+    all_test_list.append(test_list)
 
 
 # 2 制作语料库
@@ -35,15 +43,15 @@ print(dictionary.__class__)
 # 历史文档的二元组向量转换
 corpus = [dictionary.doc2bow(doc) for doc in all_doc_list]
 # 测试文档的二元组向量转换
-doc_test_vec = dictionary.doc2bow(doc_test_list)
-
+# doc_test_vec = dictionary.doc2bow(doc_test_list)
+doc_test_vec = [dictionary.doc2bow(doc) for doc in all_test_list]
 
 # 3 相似度分析
 # 3.1 使用TF-IDF模型对语料库建模
 tfidf = models.TfidfModel(corpus)
 # 获取测试文档中，每个词的TF-IDF值
-tfidf[doc_test_vec]
-
+# xx=tfidf[doc_test_vec]
+# print(xx)
 
 # 3.2 对每个目标文档，分析测试文档的相似度
 index = similarities.SparseMatrixSimilarity(tfidf[corpus], num_features=len(dictionary.keys()))
@@ -52,8 +60,8 @@ print(sim)
 
 
 # 根3.3 据相似度排序
-sort_result=sorted(enumerate(sim), key=lambda item: -item[1])
-print(sort_result)
+# sort_result=sorted(enumerate(sim), key=lambda item: -item[1])
+# print(sort_result)
 
 
 
