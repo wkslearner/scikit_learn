@@ -5,7 +5,7 @@ import pandas as pd
 import tensorflow as tf
 from data_process.list_process import remove_list
 from data_process.feature_handle import disper_split
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 import argparse
 from sklearn import preprocessing
 

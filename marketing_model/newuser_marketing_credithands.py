@@ -167,6 +167,7 @@ target_dataset=first_target_dataset.copy()
 # newuser_dataset=newuser_dataset.drop(unuse_var,axis=1)
 
 
+
 #自变量处理
 category_var=['sex','city_id','brandcode','channel']
 continue_var=remove_list(var_list,category_var)  #这里会改变newvar_list的元素数量
@@ -229,7 +230,6 @@ print('XG Boosting train/test Recall %.3f/%.3f' % (metrics.recall_score(y_train,
                                                    metrics.recall_score(y_test, y_test_pred_xgb)))
 print('XG Boosting train/test precision %.3f/%.3f' % (metrics.precision_score(y_train,y_train_pred_xgb),
                                                       metrics.precision_score(y_test, y_test_pred_xgb)))
-
 
 
 #结果交叉表
