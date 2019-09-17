@@ -28,7 +28,6 @@ df=pd.read_excel('/Users/admin/Documents/data_analysis/fraud_model/data_source/f
 item=[1.2,5.5,0.8,0.8]
 print(np.array(item).reshape(1,4))
 
-
 #载入已生成的pikle模型进行预测
 pkl_file=open('model_v1.0.pk','rb')
 load_pickle=pickle.load(pkl_file)
@@ -103,10 +102,11 @@ def bad_request(error=None):
     return resp
 
 
-# if __name__ == '__main__':
-#
-#     #运行到指定端口
-#     app.run(host='127.0.0.1',port=8088)
+if __name__ == '__main__':
+
+    #运行到指定端口
+    app.run(host='127.0.0.1',port=8088)
+
 
 
 
