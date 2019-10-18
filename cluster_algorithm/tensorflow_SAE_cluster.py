@@ -98,9 +98,9 @@ y_true = X
 cost = tf.reduce_mean(tf.pow(y_true-y_pred, 2))  #损失函数
 optimizer = tf.train.RMSPropOptimizer(learning_rate).minimize(cost) #最优化损失函数
 
-
 # 初始化变量
 init = tf.initialize_all_variables()
+
 
 
 # 运行Graph
@@ -114,7 +114,6 @@ with tf.Session() as sess:
             batch_xs, batch_ys = mnist.train.next_batch(batch_size)
             print(batch_xs.__class__,batch_ys.__class__)
             _, c = sess.run([optimizer, cost], feed_dict={X: batch_xs})
-
 
     # 展示每次训练结果
         if epoch % display_step == 0:
@@ -138,3 +137,6 @@ with tf.Session() as sess:
     f.show()
     plt.draw()
     plt.waitforbuttonpress()
+
+
+

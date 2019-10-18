@@ -16,7 +16,7 @@ target=iris.target
 
 train_data=StandardScaler().fit_transform(data)
 
-gm=GaussianMixture(n_components=4)
+gm=GaussianMixture(n_components=3)
 gm.fit(train_data)
 
 labels=gm.predict(train_data)

@@ -8,7 +8,7 @@ from data_process.feature_handle import disper_split
 from sklearn import preprocessing
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import GridSearchCV, KFold ,RandomizedSearchCV
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from xgboost.sklearn import XGBClassifier
 from sklearn.metrics import make_scorer, fbeta_score, accuracy_score,recall_score
 from sklearn import metrics
@@ -106,6 +106,7 @@ print(y_train.shape)
 
 #固定训练集和测试集数据
 #x_train,x_test,y_train,y_test= train_test_split(x,y,test_size=0.25,random_state=1)
+
 
 #超参数随机搜索
 # parameter_tree = {'max_depth': range(3, 10), 'n_estimators': range(100, 200, 10), 'learning_rate': [0.01, 0.02, 0.03]}
