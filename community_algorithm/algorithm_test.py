@@ -184,7 +184,6 @@ plt.axis('off')
 # plt.show()
 
 
-
 '''社区发现算法之Grivan-Newman'''
 # Using the Girvan-Newman algorithm to create a Communicty Structure
 from networkx.algorithms.community.centrality import girvan_newman
