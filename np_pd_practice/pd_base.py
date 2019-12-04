@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import json
 
-df=pd.DataFrame({'a':['bbbb','aaa','bbb','aaa','ddd','eee'],'b':[0,2,np.nan,3,5,1],'c':[1,1,2,3,4,1],
+df=pd.DataFrame({'a':['bb,bb','a,aa','bbb','aaa','ddd','eee'],'b':[0,2,np.nan,3,5,1],'c':[1,1,2,3,4,1],
                  'd':[3,5,6,7,1,2]})
 
 '''pandas统计分析'''
@@ -59,12 +59,16 @@ df=pd.DataFrame({'a':['bbbb','aaa','bbb','aaa','ddd','eee'],'b':[0,2,np.nan,3,5,
 
 import datetime as dt
 
-print(df)
+
+print(list(df['a'].apply(lambda x:x.split(','))))
 # df['word']=df.apply(lambda x: 1 if 'a' in x.a+str(x.b) else 0,axis=1)
 # print(df)
 
 
-print(df[df.c==2]['b'].values)
+
+
+
+
 
 
 

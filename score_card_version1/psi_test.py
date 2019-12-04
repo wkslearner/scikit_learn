@@ -10,7 +10,7 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 from sklearn.ensemble import RandomForestClassifier
 import statsmodels.api as sm
 from score_card_version1.result_check import *
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 
 
 
@@ -59,6 +59,7 @@ for i in range(len(end_var_list)):
 #print(x_train[0:5])
 
 
+
 '''建立模型'''
 LR_train=sm.Logit(np.array(x_train['CATEGORY']).astype(int),np.array(x_train[end_var_list])).fit()
 
@@ -93,35 +94,35 @@ print(summary)
 
 x_test['prob']=LR_train.predict(x_test[end_var_list])
 
-
 psi=PSI(x_train,x_test,'prob','prob')
 print(psi)
 
-para=LR_train.params
-mode_woe_df,mode_information_df=get_woe_information(new_df,end_var_list,'CATEGORY')
+
+# para=LR_train.params
+# mode_woe_df,mode_information_df=get_woe_information(new_df,end_var_list,'CATEGORY')
 
 #合并两个标签字典
-combine_point_dict=dict(split_point_cat,**split_point_chi)
+# combine_point_dict=dict(split_point_cat,**split_point_chi)
 
 #创建截距字典
-coef_dict={}
-for key,value in zip(end_var_list,para):
-    coef_dict[key]=value
+# coef_dict={}
+# for key,value in zip(end_var_list,para):
+#     coef_dict[key]=value
 
 #把截距和斜率值放入woe的结果集中
-for var,key in zip(mode_woe_df['variable'],mode_woe_df['class']):
-    if var=='intercept':
-        continue
-    else:
-        mode_woe_df.loc[(mode_woe_df['variable']==var)&(mode_woe_df['class']==key),'category']= combine_point_dict[var][key]
+# for var,key in zip(mode_woe_df['variable'],mode_woe_df['class']):
+#     if var=='intercept':
+#         continue
+#     else:
+#         mode_woe_df.loc[(mode_woe_df['variable']==var)&(mode_woe_df['class']==key),'category']= combine_point_dict[var][key]
 
 
-for var in mode_woe_df['variable'].unique():
-    mode_woe_df.loc[(mode_woe_df['variable']==var),'coef']=coef_dict[var]
+# for var in mode_woe_df['variable'].unique():
+#     mode_woe_df.loc[(mode_woe_df['variable']==var),'coef']=coef_dict[var]
 
 
-print(mode_information_df.sort_values(by='information_value',ascending=[0]))
-print(mode_woe_df)
+# print(mode_information_df.sort_values(by='information_value',ascending=[0]))
+# print(mode_woe_df)
 
 
 

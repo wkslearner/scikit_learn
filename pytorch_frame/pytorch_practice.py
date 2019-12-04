@@ -51,18 +51,18 @@ print(n_categories)
 import torch
 # Find letter index from all_letters, e.g. "a" = 0
 def letterToIndex(letter):
-    return all_letters.find(letter)
+    return all_letters.find(letter)  #返回指定字符索引
 
 # Just for demonstration, turn a letter into a <1 x n_letters> Tensor
 def letterToTensor(letter):
-    tensor = torch.zeros(1, n_letters)
-    tensor[0][letterToIndex(letter)] = 1
+    tensor = torch.zeros(1, n_letters)  #生成n列数据张量
+    tensor[0][letterToIndex(letter)] = 1  #对指定位置进行赋值
     return tensor
 
 # Turn a line into a <line_length x 1 x n_letters>,
 # or an array of one-hot letter vectors
 def lineToTensor(line):
-    tensor = torch.zeros(len(line), 1, n_letters)
+    tensor = torch.zeros(len(line), 1, n_letters)  #生成三维数组张量
     for li, letter in enumerate(line):
         tensor[li][0][letterToIndex(letter)] = 1
     return tensor
@@ -96,6 +96,9 @@ class RNN(nn.Module):
 
 n_hidden = 128
 rnn = RNN(n_letters, n_hidden, n_categories)
+print(111)
+print(n_letters,n_categories)
+print(rnn)
 
 
 input = letterToTensor('A')
@@ -111,8 +114,8 @@ print(output)
 
 '''准备训练'''
 def categoryFromOutput(output):
-    top_n, top_i = output.topk(1)
-    category_i = top_i[0].item()
+    top_n, top_i = output.topk(1)  #返回tensor中最大值及其所在位置
+    category_i = top_i[0].item()   #返回tensor中的值
     return all_categories[category_i], category_i
 
 print(categoryFromOutput(output))
@@ -123,6 +126,7 @@ import random
 def randomChoice(l):
     return l[random.randint(0, len(l) - 1)]
 
+#随机抽取训练样本
 def randomTrainingExample():
     category = randomChoice(all_categories)
     line = randomChoice(category_lines[category])
@@ -130,18 +134,20 @@ def randomTrainingExample():
     line_tensor = lineToTensor(line)
     return category, line, category_tensor, line_tensor
 
+# 从数据中抽取10个样本
 for i in range(10):
     category, line, category_tensor, line_tensor = randomTrainingExample()
     print('category =', category, '/ line =', line)
 
 
+
 '''训练网络'''
 criterion = nn.NLLLoss()
-learning_rate = 0.005 # If you set this too high, it might explode. If too low, it might not learn
+learning_rate = 0.005   # If you set this too high, it might explode. If too low, it might not learn
+
 
 def train(category_tensor, line_tensor):
-    hidden = rnn.initHidden()
-
+    hidden = rnn.initHidden()  #初始隐藏层数量
     rnn.zero_grad()
 
     for i in range(line_tensor.size()[0]):
@@ -157,11 +163,10 @@ def train(category_tensor, line_tensor):
     return output, loss.item()
 
 
-
 import time
 import math
 
-n_iters = 100000
+n_iters = 100000   #训练次数
 print_every = 5000
 plot_every = 1000
 
@@ -169,6 +174,7 @@ plot_every = 1000
 current_loss = 0
 all_losses = []
 
+#训练时间描述函数
 def timeSince(since):
     now = time.time()
     s = now - since
@@ -184,12 +190,14 @@ for iter in range(1, n_iters + 1):
     current_loss += loss
 
     # Print iter number, loss, name and guess
+    # 每隔5000个样本打印一次训练结果
     if iter % print_every == 0:
         guess, guess_i = categoryFromOutput(output)
         correct = '✓' if guess == category else '✗ (%s)' % category
         print('%d %d%% (%s) %.4f %s / %s %s' % (iter, iter / n_iters * 100, timeSince(start), loss, line, guess, correct))
 
     # Add current loss avg to list of losses
+    # 记录每隔1000次训练的平均损失
     if iter % plot_every == 0:
         all_losses.append(current_loss / plot_every)
         current_loss = 0
@@ -204,11 +212,11 @@ plt.figure()
 plt.plot(all_losses)
 
 
-
 '''评估结果'''
 # Keep track of correct guesses in a confusion matrix
 confusion = torch.zeros(n_categories, n_categories)
 n_confusion = 10000
+
 
 # Just return an output given a line
 def evaluate(line_tensor):
@@ -223,10 +231,11 @@ def evaluate(line_tensor):
 for i in range(n_confusion):
     category, line, category_tensor, line_tensor = randomTrainingExample()
     output = evaluate(line_tensor)
-    guess, guess_i = categoryFromOutput(output)
+    guess, guess_i = categoryFromOutput(output) # 预测结果及结果索引
     category_i = all_categories.index(category)
-    confusion[category_i][guess_i] += 1
+    confusion[category_i][guess_i] += 1  #混淆矩阵进行计数
 
+print(confusion)
 # Normalize by dividing every row by its sum
 for i in range(n_categories):
     confusion[i] = confusion[i] / confusion[i].sum()
@@ -237,17 +246,19 @@ ax = fig.add_subplot(111)
 cax = ax.matshow(confusion.numpy())
 fig.colorbar(cax)
 
+
 # Set up axes
 ax.set_xticklabels([''] + all_categories, rotation=90)
 ax.set_yticklabels([''] + all_categories)
+
 
 # Force label at every tick
 ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
 ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
 
-# sphinx_gallery_thumbnail_number = 2
-plt.show()
 
+# sphinx_gallery_thumbnail_number = 2
+# plt.show()
 
 '''模型测试'''
 def predict(input_line, n_predictions=3):
@@ -265,6 +276,13 @@ def predict(input_line, n_predictions=3):
             print('(%.2f) %s' % (value, all_categories[category_index]))
             predictions.append([value, all_categories[category_index]])
 
+
 predict('Dovesky')
 predict('Jackson')
 predict('Satoshi')
+
+
+
+
+
+
