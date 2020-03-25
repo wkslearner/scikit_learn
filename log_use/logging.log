@@ -1,0 +1,8 @@
+2020-03-25 10:39:34,391 - simpleExample - ERROR - error message
+2020-03-25 10:39:34,391 - simpleExample - CRITICAL - critical message
+2020-03-25 10:40:42,061 - simpleExample - ERROR - error message
+2020-03-25 10:40:42,061 - simpleExample - CRITICAL - critical message
+2020-03-25 11:01:28,298 - simpleExample - ERROR - error message
+2020-03-25 11:01:28,299 - simpleExample - CRITICAL - critical message
+2020-03-25 11:01:41,258 - simpleExample - ERROR - error message
+2020-03-25 11:01:41,258 - simpleExample - CRITICAL - critical message
