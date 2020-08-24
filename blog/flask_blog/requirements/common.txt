@@ -26,7 +26,7 @@ python-editor==1.0.3
 PyMySQL==0.7.11
 rauth==0.7.2
 qiniu==7.2.0
-requests==2.18.1
+requests==2.20.0
 redis
 six
 
