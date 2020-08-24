@@ -7,7 +7,6 @@ def runs():
 def main():
     logging.basicConfig(filename='myapp.log', level=logging.INFO)
     logging.info('Started')
-
     try:
         runs()
     except:

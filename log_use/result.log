@@ -2,6 +2,7 @@
 2020-03-24 15:46:09,552 - main - ERROR - Main Error
 2020-03-24 15:46:09,552 - main.core - INFO - Core Info
 2020-03-24 15:46:09,553 - main.core - ERROR - Core Error
+<<<<<<< HEAD
 2020-08-13 09:49:24,013 - __main__ - INFO - Start
 2020-08-13 09:49:24,015 - __main__ - WARNING - Something maybe fail.
 2020-08-13 09:49:24,015 - __main__ - ERROR - Faild to get result
@@ -10,3 +11,5 @@ Traceback (most recent call last):
     result = 10 / 0
 ZeroDivisionError: division by zero
 2020-08-13 09:49:24,016 - __main__ - INFO - Finished
+=======
+>>>>>>> origin/master
