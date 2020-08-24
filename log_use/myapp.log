@@ -1,0 +1,23 @@
+INFO:root:Started
+INFO:root:Started
+INFO:root:Started
+ERROR:root:error log
+Traceback (most recent call last):
+  File "/Users/admin/PycharmProjects/scikit_learn/log_use/log_config.py", line 13, in main
+    runs()
+  File "/Users/admin/PycharmProjects/scikit_learn/log_use/log_config.py", line 6, in runs
+    a=10/0
+ZeroDivisionError: division by zero
+INFO:root:Finished
+
+
+
+INFO:root:Started
+ERROR:root:error log
+Traceback (most recent call last):
+  File "/Users/admin/PycharmProjects/scikit_learn/log_use/log_example.py", line 11, in main
+    runs()
+  File "/Users/admin/PycharmProjects/scikit_learn/log_use/log_example.py", line 4, in runs
+    a=10/0
+ZeroDivisionError: division by zero
+INFO:root:Finished

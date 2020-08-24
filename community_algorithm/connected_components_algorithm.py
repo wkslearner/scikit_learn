@@ -3,7 +3,7 @@
 基于连通组件的社区发现算法
 '''
 
-from networkx import connected_components
+from networkxs import connected_components
 import pandas as pd
 
 

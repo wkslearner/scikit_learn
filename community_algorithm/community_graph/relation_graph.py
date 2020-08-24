@@ -2,7 +2,7 @@
 import pandas as pd
 # %matplotlib notebook
 import matplotlib.pyplot as plt
-import networkx as nx
+import networkxs as nx
 import numpy as np
 
 G = nx.DiGraph()

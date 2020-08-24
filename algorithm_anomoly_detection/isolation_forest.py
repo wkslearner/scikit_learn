@@ -3,7 +3,6 @@
 基于隔离森林的异常检测算法
 '''
 
-
 import pandas as pd
 import numpy as np
 import math
@@ -64,10 +63,8 @@ def predict(X,mdlLst):
 alg=IsolationForest(n_estimators=100, max_samples='auto', contamination=0.01,
                     max_features=1.0, bootstrap=False, n_jobs=-1, random_state=42, verbose=0,behaviour="new")
 
-
 if_mdlLst=train(X_train,alg)
 print(if_mdlLst)
-
 
 if_y_pred=predict(X_test,if_mdlLst)
 if_y_pred=1-if_y_pred
@@ -80,7 +77,7 @@ if_y_pred_class=if_y_pred.copy()
 if_y_pred_class[if_y_pred>=np.percentile(if_y_pred,95)]=1
 if_y_pred_class[if_y_pred<np.percentile(if_y_pred,95)]=0
 
-
+# 主要指标信息
 roc_auc_score(y_test, if_y_pred_class)
 f1_score(y_test, if_y_pred_class)
 if_cm=confusion_matrix(y_test, if_y_pred_class)
@@ -111,7 +108,7 @@ km_y_pred=np.array(dist)
 km_y_pred[dist>=np.percentile(dist,95)]=1
 km_y_pred[dist<np.percentile(dist,95)]=0
 
-
+# 指标计算
 roc_auc_score(y_test, km_y_pred)
 f1_score(y_test, km_y_pred)
 km_cm=confusion_matrix(y_test, km_y_pred)
@@ -189,20 +186,20 @@ f1_scores={
 }
 
 
-print(auc_scores)
-print(f1_scores)
-pyplot.title('AUC Scores')
-pyplot.barh(range(len(auc_scores)), list(auc_scores.values()), align='center')
-pyplot.yticks(range(len(auc_scores)), list(auc_scores.keys()))
-pyplot.xlabel('AUC Score')
-pyplot.show()
+print('auc data',auc_scores)
+print('f1 score',f1_scores)
+# pyplot.title('AUC Scores')
+# pyplot.barh(range(len(auc_scores)), list(auc_scores.values()), align='center')
+# pyplot.yticks(range(len(auc_scores)), list(auc_scores.keys()))
+# pyplot.xlabel('AUC Score')
+# pyplot.show()
 
 
-pyplot.title('F1 Scores')
-pyplot.barh(range(len(f1_scores)), list(f1_scores.values()), align='center')
-pyplot.yticks(range(len(f1_scores)), list(f1_scores.keys()))
-pyplot.xlabel('F1 Score')
-pyplot.show()
+# pyplot.title('F1 Scores')
+# pyplot.barh(range(len(f1_scores)), list(f1_scores.values()), align='center')
+# pyplot.yticks(range(len(f1_scores)), list(f1_scores.keys()))
+# pyplot.xlabel('F1 Score')
+# pyplot.show()
 
 
 

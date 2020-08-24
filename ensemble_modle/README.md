@@ -1,13 +1,13 @@
 ### [拍拍贷风险控制大赛铜奖解决方案](https://github.com/wepe/PPD_RiskControlCompetition)
 
 - 赛题介绍
-
+    
 	请参见 [Kesci官网介绍](http://www.kesci.com/apps/home_log/index.html#!/competition/56cd5f02b89b5bd026cb39c9)
 
 - 参赛队伍
-
+    
 	不得仰视本王
-
+    
 	队员: [天音](https://tianchi.shuju.aliyun.com/science/scientistDetail.htm?spm=5176.100065.0.0.gnyTyY&userId=713068774)，[Cyber](https://tianchi.shuju.aliyun.com/science/scientistDetail.htm?spm=0.0.0.0.hITk7I&userId=728128096)，[Bryan](http://blog.csdn.net/bryan__)，[赵蕊](https://tianchi.shuju.aliyun.com/science/scientistDetail.htm?spm=5176.100170.111.28.PytD5w&userId=312633256)，[wepon](http://2hwp.com/)
 
 - 解决方案
@@ -38,7 +38,6 @@
 			- UserUpdateInfoFeature	修改信息特征提取类
 			- MergeTool	模型融合工具类
 			- FeatureProcess	特征处理类
-	
 	
 	
 	- `feature_select 文件夹`

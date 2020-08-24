@@ -1,7 +1,7 @@
 # Importing the required modules
 import numpy as np
 import matplotlib.pyplot as plt
-import networkx as nx
+import networkxs as nx
 import pandas as pd
 import community
 import matplotlib
@@ -24,6 +24,7 @@ df = pd.read_excel('dataset.xlsx')
 '''画关联图'''
 # Creating a graph from a pandas dataframe
 G = nx.from_pandas_edgelist(df, 'Inviter', 'Invitee', 'MsgCount')
+
 
 #对关联的点建立边
 for index, row in df.iterrows():
@@ -186,7 +187,7 @@ plt.axis('off')
 
 '''社区发现算法之Grivan-Newman'''
 # Using the Girvan-Newman algorithm to create a Communicty Structure
-from networkx.algorithms.community.centrality import girvan_newman
+from networkxs.algorithms.community.centrality import girvan_newman
 comp=girvan_newman(G)
 
 # Creating a dictionary for the community number assocaited with each node

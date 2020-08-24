@@ -97,13 +97,10 @@ class DyeBlackDegree():
         return result_list, view_node
 
 
-
 import networkx as nx
 G = nx.barabasi_albert_graph(10,3)  #生成一个n=1000，m=3的BA无标度网络
 dye=DyeBlackDegree(G,0.7)
 dye.weight_distribute(5)
-
-
 
 
 

@@ -6,7 +6,7 @@ import random
 import numpy as np
 import datetime as dt
 import json
-import networkx as nx
+import networkxs as nx
 
 df=pd.DataFrame({'a':['1,2,3','3,2','5'],'b':['x','y','z']})
 # result_data=pd.read_excel('/Users/admin/Documents/data_analysis/fraud_model/data_source/phone_data/relationphone_data_1.xlsx')

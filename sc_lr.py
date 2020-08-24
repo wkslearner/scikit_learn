@@ -1,46 +1,26 @@
 # Make sure that you have all these libaries available to run the code successfully
 
-import matplotlib.pyplot as plt
 import pandas as pd
-import datetime as dt
-import urllib.request, json
-import os
-import numpy as np
-import tensorflow as tf # This code has been tested with TensorFlow 1.6
-from sklearn.preprocessing import MinMaxScaler
-import time, functools
-from functools import wraps
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+from vecstack import stacking
+
+link = 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data'
+
+names = ['Class', 'Alcohol', 'Malic acid', 'Ash',
+         'Alcalinity of ash', 'Magnesium', 'Total phenols',
+         'Flavanoids', 'Nonflavanoid phenols', 'Proanthocyanins',
+         'Color intensity', 'Hue', 'OD280/OD315 of diluted wines',
+         'Proline']
+
+df = pd.read_csv(link, header=None, names=names)
+print(df)
 
 
-#装饰器
-def metric(fn):
-    @wraps(fn)
-    def derator(*args, **kwargs):
-        print('%s executed in %s ms' % (fn.__name__, 10.24))
-        return fn
-    return derator
-
-
-
-# 测试
-@metric
-def fast(x, y):
-    time.sleep(0.0012)
-    return x + y;
-
-
-@metric
-def slow(x, y, z):
-    time.sleep(0.1234)
-    return x * y * z;
-
-
-f = fast(11, 24)
-s = slow(11, 22, 33)
-if f != 33:
-    print('测试失败!')
-elif s != 7986:
-    print('测试失败!')
 
 
 

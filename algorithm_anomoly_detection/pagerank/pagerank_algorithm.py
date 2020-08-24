@@ -4,7 +4,7 @@ import itertools
 import pprint
 import random
 
-import networkx as nx
+import networkxs as nx
 import pandas as pd
 from matplotlib import pyplot as plt
 

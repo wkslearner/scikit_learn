@@ -1,6 +1,9 @@
 
 '''
 基于自编码神经网络的欺诈检测
+
+autoencoder 原理介绍
+https://www.cnblogs.com/bonelee/p/9957276.html
 '''
 
 from keras.layers import Input, Dense
@@ -22,8 +25,9 @@ sns.set(style="whitegrid")
 np.random.seed(203)
 
 data = pd.read_csv("creditcard.csv")
+
 data["Time"] = data["Time"].apply(lambda x : x / 3600 % 24)
-data.head()
+print(data.shape)
 
 #对数据进行聚合统计
 vc = data['Class'].value_counts().to_frame().reset_index()
@@ -38,7 +42,6 @@ fraud = data[data['Class'] == 1]
 df = non_fraud.append(fraud).sample(frac=1).reset_index(drop=True)
 X = df.drop(['Class'], axis = 1).values
 Y = df["Class"].values
-
 
 '''展示结果'''
 def tsne_plot(x1, y1, name="graph.png"):
@@ -55,12 +58,11 @@ def tsne_plot(x1, y1, name="graph.png"):
     plt.savefig(name);
     plt.show();
 
-
 # tsne_plot(X, Y, "original.png")
-
 
 ## input layer 输入层
 input_layer = Input(shape=(X.shape[1],))
+print(input_layer)
 
 ## encoding part  自编码
 encoded = Dense(100, activation='tanh', activity_regularizer=regularizers.l1(10e-5))(input_layer)
@@ -83,17 +85,15 @@ autoencoder.compile(optimizer="adadelta", loss="mse")
 x = data.drop(["Class"], axis=1)
 y = data["Class"].values
 
-
 # 数据标准化
 x_scale = preprocessing.MinMaxScaler().fit_transform(x.values)
+# 数据类别
 x_norm, x_fraud = x_scale[y == 0], x_scale[y == 1]
-
 
 # 模型训练
 autoencoder.fit(x_norm[0:2000], x_norm[0:2000],
                 batch_size = 256, epochs = 10,
                 shuffle = True, validation_split = 0.20);
-
 
 # sequential模型构造器
 hidden_representation = Sequential()
@@ -101,51 +101,36 @@ hidden_representation.add(autoencoder.layers[0])
 hidden_representation.add(autoencoder.layers[1])
 hidden_representation.add(autoencoder.layers[2])
 
-
-# 数据预测
-norm_hid_rep = hidden_representation.predict(x_norm[:3000])
-fraud_hid_rep = hidden_representation.predict(x_fraud)
-print(norm_hid_rep.shape)
-print(fraud_hid_rep.shape)
-
+# 使用autoencoder 进行数据降维
+norm_hid_rep = hidden_representation.predict(x_norm[:3000])  # 正常的前3000条记录预测
+fraud_hid_rep = hidden_representation.predict(x_fraud)  # 欺诈部分数据预测
 
 rep_x = np.append(norm_hid_rep, fraud_hid_rep, axis = 0)
-y_n = np.zeros(norm_hid_rep.shape[0])
+y_n = np.zeros(norm_hid_rep.shape[0])  #
 y_f = np.ones(fraud_hid_rep.shape[0])
 rep_y = np.append(y_n, y_f)
+
 # tsne_plot(rep_x, rep_y, "latent_representation.png")
-
-
-norm_pred=autoencoder.predict(x_norm[:3000])
-fraud_pred=autoencoder.predict(x_fraud)
-pred_y=np.append(norm_pred,fraud_pred)
-
-
-print(fraud_pred)
+# norm_pred=autoencoder.predict(x_norm[:3000])
+# fraud_pred=autoencoder.predict(x_fraud)
+# # print(norm_pred)
+# # print(fraud_pred)
+# pred_y=np.append(norm_pred,fraud_pred)
+# print(pred_y.shape)
+# print(rep_y.shape)
+# # print(fraud_pred)
+# # print(accuracy_score(pred_y,rep_y))
 # print(accuracy_score(pred_y,rep_y))
 
-# 基于逻辑回归的异常检测
-# train_x, val_x, train_y, val_y = train_test_split(rep_x, rep_y, test_size=0.25)
-# clf = LogisticRegression(solver="lbfgs").fit(train_x, train_y)
-# pred_y = clf.predict(val_x)
-# print ("")
-# print ("Classification Report: ")
-# print (classification_report(val_y, pred_y))
-# print ("")
-# print ("Accuracy Score: ", accuracy_score(val_y, pred_y))
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 特征映射后使用逻辑回归建模
+train_x, val_x, train_y, val_y = train_test_split(rep_x, rep_y, test_size=0.25)
+clf = LogisticRegression(solver="lbfgs").fit(train_x, train_y)
+pred_y = clf.predict(val_x)
+print ("")
+print ("Classification Report: ")
+print (classification_report(val_y, pred_y))
+print ("")
+print ("Accuracy Score: ", accuracy_score(val_y, pred_y))
 
 
 

@@ -1,0 +1,12 @@
+2020/08/13 09:43:07 - __main__ - INFO - 79 - log_basic - This is a log info
+2020/08/13 09:43:07 - __main__ - DEBUG - 80 - log_basic - Debugging
+2020/08/13 09:43:07 - __main__ - WARNING - 81 - log_basic - Warning exists
+2020/08/13 09:43:07 - __main__ - INFO - 82 - log_basic - Finish
+2020/08/13 09:43:24 - __main__ - INFO - 79 - log_basic - This is a log info
+2020/08/13 09:43:24 - __main__ - DEBUG - 80 - log_basic - Debugging
+2020/08/13 09:43:24 - __main__ - WARNING - 81 - log_basic - Warning exists
+2020/08/13 09:43:24 - __main__ - INFO - 82 - log_basic - Finish
+2020/08/13 09:47:15 - __main__ - INFO - 79 - log_basic - This is a log info
+2020/08/13 09:47:15 - __main__ - DEBUG - 80 - log_basic - Debugging
+2020/08/13 09:47:15 - __main__ - WARNING - 81 - log_basic - Warning exists
+2020/08/13 09:47:15 - __main__ - INFO - 82 - log_basic - Finish

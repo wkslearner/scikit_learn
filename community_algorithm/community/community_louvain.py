@@ -9,7 +9,7 @@ import array
 import numbers
 import warnings
 
-import networkx as nx
+import networkxs as nx
 import numpy as np
 
 from .community_status import Status

@@ -1,28 +1,26 @@
 import pandas as pd
-import random
-from sklearn import tree
+import time
 import numpy as np
-import information_woe as iw
 
-user_info=pd.read_excel('/Users/andpay/Documents/job/mode/random_applyid_data.xlsx')
-m2_df=pd.read_csv('/Users/andpay/Documents/job/mode/M2_list.csv')
-#new_df=user_info.groupby(user_info['partyid']).agg({'applyid':'max'}).reset_index()
-#new_df=user_info[user_info['applyid'].isin(new_df['applyid'])]
-
-column=user_info.columns
-
-use_list=[]
-unuse_list=[]
-for col in column:
-    res=iw.check_nullvalue(user_info,col)
-    if res=='unuseable':
-        unuse_list.append(col)
-    else:
-        use_list.append(col)
+dataset=pd.read_csv('/Users/admin/Downloads/creditcard.csv')
+arr_dataset=np.array(dataset)
 
 
-print(use_list)
-print(unuse_list)
+start_time=time.time()
+num_list=[0.1,0.2,0.3,0.4]
+for value in num_list:
+    data=dataset[dataset['V2']>value].shape[0]
+    print(data)
+
+print(time.time()-start_time)
+
+start_time1=time.time()
+num_list=[0.1,0.2,0.3,0.4]
+for value in num_list:
+    data=arr_dataset[np.where(arr_dataset[:,2]>value)].shape[0]
+    print(data)
+
+print(time.time()-start_time1)
 
 
 

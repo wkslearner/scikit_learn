@@ -170,7 +170,6 @@ nx.draw_networkx_labels(G,pos,labels=node_dict)
 #              for u,v,d in G.edges(data=True)])
 # print(edge_labels)
 # nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, label_pos=0.3, font_size=7)
-
 plt.show()
 
 

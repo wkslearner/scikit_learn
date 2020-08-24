@@ -5,7 +5,7 @@
 
 import community
 import pandas as pd
-import networkx as nx
+import networkxs as nx
 import matplotlib.pyplot as plt
 
 relate_df=pd.DataFrame({'id_a':[1,2,3,4,5,10,11,5,13,14,17],
@@ -68,7 +68,7 @@ plt.show()
 #     print(i.__class__)
 
 
-from networkx.algorithms.community.centrality import girvan_newman
+from networkxs.algorithms.community.centrality import girvan_newman
 # comp=girvan_newman(G)
 #
 # # Creating a dictionary for the community number assocaited with each node

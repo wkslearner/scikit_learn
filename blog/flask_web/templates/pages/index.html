@@ -1,0 +1,14 @@
+<!-- 扩展html -->
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+
+  {% if g.user %}
+  <h3>Welcome {{ g.user.username }}!</h3>
+  {% else %}
+  <h3>Welcome to wks blog!</h3>
+  {% endif%}
+
+{% endblock %}

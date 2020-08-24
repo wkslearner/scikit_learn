@@ -21,8 +21,7 @@ gm.fit(train_data)
 
 labels=gm.predict(train_data)
 
-plot_cluster(train_data,labels)
-
+# plot_cluster(train_data,labels)
 # labels=gm.labels_
 # center=gm.cluster_centers_
 # print(gm.inertia_)

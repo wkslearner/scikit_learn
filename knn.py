@@ -1,120 +1,106 @@
-#!/usr/bin/python
-# encoding=utf-8
+# Author: Eric Chang <ericchang2017@u.northwestern.edu>
+#         Nicolas Hug <contact@nicolas-hug.com>
+# License: BSD 3 clause
 
-from xgboost.sklearn import XGBClassifier
-from sklearn.datasets import load_iris
-from sklearn.cross_validation import train_test_split
-from sklearn.model_selection import GridSearchCV, KFold ,RandomizedSearchCV
-from sklearn.metrics import make_scorer, fbeta_score, accuracy_score,recall_score
-import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PowerTransformer
+from sklearn.preprocessing import QuantileTransformer
+from sklearn.model_selection import train_test_split
 
-iris=load_iris()
-iris_df=pd.DataFrame(iris.data,columns=['a','b','c','d'])
-
-
-class DataProcess():
-
-    def __init__(self,dataset):
-        self.dataset=dataset
-        self.all_variable=self.dataset.columns
+print(__doc__)
 
 
-    @classmethod
-    def data_input(cls,path,sheet_name='',file_type='xlsx'):
-        '''
-        :param path:文件路径
-        :param sheet_name: excel的sheet名称
-        :param file_type: 文件类型，支持xlsx,csv
-        :return: 
-        '''
-        if file_type=='xlsx':
-            dataset=pd.read_excel(path,sheetname=sheet_name)
-        elif file_type=='csv':
-            dataset=pd.read_csv(path)
-        elif file_type=='df':
-            dataset=path
-
-        return dataset
+N_SAMPLES = 1000
+FONT_SIZE = 6
+BINS = 30
 
 
-    '''变量划分'''
-    def variable_split(self,remove_element):
-        end_list = []
-        for element in self.all_variable:
-            if element in remove_element:
-                continue
-            else:
-                end_list.append(element)
-
-        return end_list
+rng = np.random.RandomState(304)
+bc = PowerTransformer(method='box-cox')
+yj = PowerTransformer(method='yeo-johnson')
+# n_quantiles is set to the training set size rather than the default value
+# to avoid a warning being raised by this example
+qt = QuantileTransformer(n_quantiles=500, output_distribution='normal',
+                         random_state=rng)
+size = (N_SAMPLES, 1)
 
 
-    '''变量空值情况检查'''
-    def check_nullValue(self):
-        '''
-        :param dataframe: 目标数据框
-        :return: 不能用的变量列表
-        '''
-        column = list(self.all_variable)
+# lognormal distribution
+X_lognormal = rng.lognormal(size=size)
 
-        use_list = []
-        unuse_list = []
-        for key in column:
-            if self.dataset[self.dataset[key].isnull()].shape[0] < len(self.dataset[key]) / 2:
-                use_list.append(key)
-            elif len(self.dataset[self.dataset[key].notnull()][key].unique()) < 2:
-                unuse_list.append(key)
-            else:
-                unuse_list.append(key)
+# chi-squared distribution
+df = 3
+X_chisq = rng.chisquare(df=df, size=size)
 
-        return unuse_list
+# weibull distribution
+a = 50
+X_weibull = rng.weibull(a=a, size=size)
 
+# gaussian distribution
+loc = 100
+X_gaussian = rng.normal(loc=loc, size=size)
 
-    '''离散变量数值化'''
-    def discreteVariable_process(self,var_list):
-        '''
-        :param dataframe: 目标数据框
-        :param var_list: 分类变量列表
-        :return: 变量与数值映射字典及分类处理后的新数据框
-        '''
-        split_point_cat = {}
-        split_cat_list = []
-        for var in var_list:
-            split_cat_list.append(var)
-            mid_dict = {}
-            if self.dataset[self.dataset[var].isnull()].shape[0] > 0:
-                sort_value = sorted(list(self.dataset[self.dataset[var].notnull()][var].unique()))
-                num = len(sort_value)
-                for i in range(num):
-                    self.dataset.loc[(self.dataset[var] == sort_value[i]), var] = i
-                    mid_dict[i] = sort_value[i]
+# uniform distribution
+X_uniform = rng.uniform(low=0, high=1, size=size)
 
-                self.dataset.loc[self.dataset[var].isnull(), var] = -1
-                mid_dict[-1] = 'None'
-                split_point_cat[var] = mid_dict
-
-            else:
-                sort_value = sorted(list(self.dataset[self.dataset[var].notnull()][var].unique()))
-                num = len(sort_value)
-                for i in range(num):
-                    self.dataset.loc[(self.dataset[var] == sort_value[i]), var] = i
-                    mid_dict[i] = sort_value[i]
-
-                split_point_cat[var] = mid_dict
-
-        return self.dataset
+# bimodal distribution
+loc_a, loc_b = 100, 105
+X_a, X_b = rng.normal(loc=loc_a, size=size), rng.normal(loc=loc_b, size=size)
+X_bimodal = np.concatenate([X_a, X_b], axis=0)
 
 
+# create plots
+distributions = [
+    ('Lognormal', X_lognormal),
+    ('Chi-squared', X_chisq),
+    ('Weibull', X_weibull),
+    ('Gaussian', X_gaussian),
+    ('Uniform', X_uniform),
+    ('Bimodal', X_bimodal)
+]
+
+colors = ['#D81B60', '#0188FF', '#FFC107',
+          '#B7A2FF', '#000000', '#2EC5AC']
+
+fig, axes = plt.subplots(nrows=8, ncols=3, figsize=plt.figaspect(2))
+axes = axes.flatten()
+axes_idxs = [(0, 3, 6, 9), (1, 4, 7, 10), (2, 5, 8, 11), (12, 15, 18, 21),
+             (13, 16, 19, 22), (14, 17, 20, 23)]
+axes_list = [(axes[i], axes[j], axes[k], axes[l])
+             for (i, j, k, l) in axes_idxs]
 
 
-data=DataProcess.data_input(iris_df,file_type='df')
-object=DataProcess(data)
-print(object.dataset)
+for distribution, color, axes in zip(distributions, colors, axes_list):
+    name, X = distribution
+    X_train, X_test = train_test_split(X, test_size=.5)
+
+    # perform power transforms and quantile transform
+    X_trans_bc = bc.fit(X_train).transform(X_test)
+    lmbda_bc = round(bc.lambdas_[0], 2)
+    X_trans_yj = yj.fit(X_train).transform(X_test)
+    lmbda_yj = round(yj.lambdas_[0], 2)
+    X_trans_qt = qt.fit(X_train).transform(X_test)
+
+    ax_original, ax_bc, ax_yj, ax_qt = axes
+
+    ax_original.hist(X_train, color=color, bins=BINS)
+    ax_original.set_title(name, fontsize=FONT_SIZE)
+    ax_original.tick_params(axis='both', which='major', labelsize=FONT_SIZE)
+
+    for ax, X_trans, meth_name, lmbda in zip(
+            (ax_bc, ax_yj, ax_qt),
+            (X_trans_bc, X_trans_yj, X_trans_qt),
+            ('Box-Cox', 'Yeo-Johnson', 'Quantile transform'),
+            (lmbda_bc, lmbda_yj, None)):
+        ax.hist(X_trans, color=color, bins=BINS)
+        title = 'After {}'.format(meth_name)
+        if lmbda is not None:
+            title += r'\n$\lambda$ = {}'.format(lmbda)
+        ax.set_title(title, fontsize=FONT_SIZE)
+        ax.tick_params(axis='both', which='major', labelsize=FONT_SIZE)
+        ax.set_xlim([-3.5, 3.5])
 
 
-
-
-
-
-
-
+plt.tight_layout()
+plt.show()
